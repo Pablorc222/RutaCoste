@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://rutacoste.es/</loc></url>
-  <url><loc>https://rutacoste.es/aviso-legal.html</loc></url>
-  <url><loc>https://rutacoste.es/privacidad.html</loc></url>
-  <url><loc>https://rutacoste.es/cookies.html</loc></url>
+    <url>
+        <loc>https://ruta-coste-j2zpiwykv-pablo-webs.vercel.app/</loc>
+    </url>
+    <url>
+        <loc>https://ruta-coste-j2zpiwykv-pablo-webs.vercel.app/aviso-legal.html</loc>
+    </url>
+    <url>
+        <loc>https://ruta-coste-j2zpiwykv-pablo-webs.vercel.app/privacidad.html</loc>
+    </url>
+    <url>
+        <loc>https://ruta-coste-j2zpiwykv-pablo-webs.vercel.app/cookies.html</loc>
+    </url>
 </urlset>
