@@ -54,16 +54,10 @@ img{ max-width:100%; }
 /* ---------- header ---------- */
 header{
   position:sticky; top:0; z-index:100;
-  background:transparent;
-  border-bottom:1px solid transparent;
-  transition:background .25s ease, border-color .25s ease;
-}
-header.solid{
-  background:rgba(18,22,27,0.9);
+  background:rgba(18,22,27,0.96);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--asphalt-line);
 }
-body:not(.has-hero) header{ background:rgba(18,22,27,0.96); border-bottom:1px solid var(--asphalt-line); }
 
 .nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; max-width:var(--maxw); margin:0 auto; padding-left:24px; padding-right:24px; }
 .brand{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; display:flex; align-items:center; gap:2px; color:var(--paper-on-dark); text-decoration:none; }
@@ -182,7 +176,8 @@ body:not(.has-hero) header{ background:rgba(18,22,27,0.96); border-bottom:1px so
 .currency-badge.updated{ background:var(--marker); color:var(--marker-ink); }
 
 .ac-list{
-  position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:50;  background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm);
+  position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:50;
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm);
   box-shadow:0 16px 32px -12px rgba(20,26,24,0.28);
   max-height:280px; overflow-y:auto; display:none; padding:6px;
 }
