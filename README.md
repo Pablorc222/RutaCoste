@@ -1,55 +1,273 @@
-# RutaCoste
+# 🚗 RutaCoste
 
-Calculadora del coste de combustible de un trayecto por carretera, en España o en el extranjero. Sitio estático (HTML/CSS/JS puro), sin backend ni dependencias — se despliega tal cual en Vercel.
+**Calculadora gratuita para calcular cuánto cuesta un viaje en coche.**
 
-## Qué trae esta versión
+RutaCoste permite estimar el coste de combustible de cualquier trayecto por carretera introduciendo el origen, destino, consumo del vehículo y precio del combustible.
 
-- Identidad visual propia: héroe "carretera de noche" con panel de mandos flotante, contenido sobre "papel de mapa" y footer de asfalto.
-- Buscador de origen/destino con **autocompletado en tiempo real y cobertura mundial** (no solo España): al escribir aparecen coincidencias con ciudad, región y país.
-- Selector rápido de tipo de vehículo (chips) que rellena el consumo automáticamente; la tabla de consumos orientativos también es interactiva (clic en una fila = rellena el campo).
-- Mapa de la ruta calculada (Leaflet + teselas de OpenStreetMap) con el trazado real.
-- Sección dedicada a explicar el uso internacional, pensada para SEO y para dejar claro el alcance de la herramienta.
+🌐 **Web:** https://ruta-coste.vercel.app/
 
-## Cómo funciona técnicamente
+---
 
-- **Geocodificación y autocompletado** (convertir "Madrid" o "Lyon" en coordenadas): [Nominatim](https://nominatim.org/) (OpenStreetMap), servicio público y gratuito, sin restricción de país.
-- **Cálculo de ruta** (distancia real por carretera): [OSRM](http://project-osrm.org/) demo server, también público y gratuito.
-- **Mapa**: [Leaflet](https://leafletjs.com/) cargado desde cdnjs, con teselas del servidor de demostración `tile.openstreetmap.org`.
-- **Aviso importante:** los tres servicios anteriores son *de demostración*, pensados para uso ligero (Nominatim y OSRM limitan a ~1 petición/segundo; las teselas de OSM piden un uso razonable). Son perfectos para lanzar y probar RutaCoste. Si el tráfico crece de verdad, sustitúyelos por planes de pago (Google Maps Platform, Mapbox, OpenRouteService, MapTiler…) para evitar bloqueos — todas las llamadas están aisladas en `app.js` para que sea fácil de cambiar.
+## ✨ Características
 
-## Desplegar en Vercel (gratis, con subdominio)
+* 🗺️ **Cálculo de rutas reales por carretera**
+* ⛽ **Estimación del coste de gasolina o diésel**
+* 📍 **Origen y destino con autocompletado**
+* 🌍 **Compatible con rutas internacionales**
+* 🚗 **Selección rápida del tipo de vehículo**
+* 🔄 **Cálculo de trayectos de ida y vuelta**
+* 💶 **Detección de moneda según el país**
+* 🗺️ **Mapa interactivo con el recorrido**
+* 📱 **Diseño responsive para ordenador y móvil**
+* 🔒 **Sin registro y sin necesidad de descargar ninguna aplicación**
 
-1. Crea un repositorio en GitHub y sube esta carpeta tal cual (`index.html`, `style.css`, `app.js`, páginas legales, etc.) a la raíz del repo.
-2. Entra en [vercel.com](https://vercel.com) y crea una cuenta (puedes entrar directamente con tu cuenta de GitHub).
-3. "Add New… → Project" → selecciona el repositorio de RutaCoste.
-4. Como es un sitio estático, Vercel no necesita configuración especial (no hay "Build Command" ni framework) — dale a **Deploy**.
-5. En un par de minutos tendrás la web publicada en `rutacoste.vercel.app` (o el nombre que le des al proyecto).
+---
 
-## Cuando quieras pasar a un dominio propio (rutacoste.es)
+## 🎯 ¿Para qué sirve?
 
-1. Compra el dominio en cualquier registrador (no hace falta que sea en Vercel).
-2. En el proyecto de Vercel → **Settings → Domains** → añade `rutacoste.es`.
-3. Vercel te dará unos registros DNS (normalmente un registro `A` o `CNAME`) que tienes que añadir en el panel de tu registrador de dominios.
-4. En unas horas (a veces minutos) el dominio quedará apuntando a tu web en Vercel, con HTTPS automático.
+RutaCoste está pensada para conocer de forma rápida cuánto puede costar un viaje antes de salir.
 
-## Antes de solicitar Google AdSense
+Solo tienes que introducir:
 
-- [ ] Sustituye todos los campos `[entre corchetes]` de `aviso-legal.html` y `privacidad.html` por tus datos reales.
-- [ ] Ten el sitio en su dominio propio (`.es` o `.com`), no en el subdominio `.vercel.app`.
-- [ ] Da de alta el dominio en [Google Search Console](https://search.google.com/search-console) para que Google pueda indexarlo.
-- [ ] Actualiza `robots.txt` y `sitemap.xml` si cambias el dominio (ahora mismo apuntan a `rutacoste.es`, cámbialo si usas otro).
-- [ ] Añade contenido de calidad de verdad (esta plantilla ya trae una sección "Cómo funciona", una tabla de consumos, una sección internacional y una FAQ — puedes ampliarlas con más artículos si quieres reforzar el SEO).
-- [ ] Si esperas mucho tráfico, revisa el apartado "Cómo funciona técnicamente" y valora pasar a APIs de pago para geocodificación, rutas y teselas del mapa.
+1. 📍 Origen
+2. 📍 Destino
+3. ⛽ Consumo del vehículo en L/100 km
+4. 💰 Precio del combustible
 
-## Estructura de archivos
+La calculadora obtiene la distancia por carretera y estima los litros necesarios y el coste aproximado del combustible.
 
+También puedes seleccionar **ida y vuelta** para calcular el coste total del trayecto.
+
+---
+
+## 🧮 ¿Cómo se calcula?
+
+El coste estimado se obtiene mediante una fórmula sencilla:
+
+```text
+Litros necesarios = Distancia × Consumo / 100
+
+Coste del viaje = Litros necesarios × Precio por litro
 ```
-index.html         → página principal con la calculadora
-aviso-legal.html    → plantilla de aviso legal (rellena los datos)
-privacidad.html      → plantilla de política de privacidad
-cookies.html         → plantilla de política de cookies
-style.css            → estilos de todo el sitio
-app.js               → lógica de la calculadora + aviso de cookies
-robots.txt           → indicaciones para buscadores
-sitemap.xml           → mapa del sitio para indexación
+
+### Ejemplo
+
+Para un viaje de **500 km**, con un consumo de **6,5 L/100 km** y un precio de **1,65 €/L**:
+
+```text
+500 × 6,5 / 100 = 32,5 litros
+
+32,5 × 1,65 € = 53,63 €
 ```
+
+Por tanto, el coste estimado del trayecto sería de **53,63 €**.
+
+---
+
+## 🌍 Rutas internacionales
+
+RutaCoste no está limitada a España.
+
+Puedes introducir ciudades, pueblos o direcciones de diferentes países y calcular rutas internacionales por carretera.
+
+El sistema permite seleccionar las coincidencias encontradas mostrando información sobre la ciudad, región y país.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+RutaCoste está desarrollado como una aplicación web estática utilizando tecnologías web estándar:
+
+* **HTML5**
+* **CSS3**
+* **JavaScript**
+* **Leaflet**
+* **OpenStreetMap**
+* **Nominatim**
+* **OSRM**
+* **Vercel**
+
+No utiliza backend propio ni framework frontend.
+
+---
+
+## 🗺️ Servicios utilizados
+
+### Nominatim
+
+Se utiliza para la búsqueda y geocodificación de lugares.
+
+Convierte búsquedas como:
+
+```text
+Madrid
+```
+
+en coordenadas geográficas que pueden utilizarse para calcular la ruta.
+
+Proyecto:
+
+https://nominatim.org/
+
+### OSRM
+
+Se utiliza para calcular la ruta real por carretera entre dos puntos.
+
+Proyecto:
+
+http://project-osrm.org/
+
+### Leaflet
+
+Se utiliza para mostrar el mapa interactivo y representar visualmente el recorrido.
+
+Web:
+
+https://leafletjs.com/
+
+### OpenStreetMap
+
+Los mapas utilizan datos de OpenStreetMap.
+
+Web:
+
+https://www.openstreetmap.org/
+
+---
+
+## ⚠️ Limitaciones de los servicios
+
+RutaCoste utiliza servicios públicos y de demostración para la geocodificación, cálculo de rutas y mapas.
+
+Estos servicios están pensados para un uso razonable y pueden aplicar límites de peticiones.
+
+Por este motivo, si el proyecto alcanza un volumen elevado de tráfico, sería recomendable migrar a servicios con infraestructura y límites adecuados para producción, como alternativas comerciales o servicios propios.
+
+La integración está centralizada principalmente en `app.js`, facilitando una futura sustitución.
+
+---
+
+## 🚀 Ejecutar el proyecto
+
+RutaCoste no necesita un proceso de compilación.
+
+Puedes descargar o clonar el repositorio y abrir `index.html` en un navegador.
+
+```bash
+git clone https://github.com/Pablorc222/RutaCoste.git
+cd RutaCoste
+```
+
+También puedes desplegarlo directamente en servicios de hosting para sitios estáticos.
+
+---
+
+## ☁️ Despliegue
+
+El proyecto está preparado para desplegarse en **Vercel**.
+
+No necesita:
+
+* Backend
+* Base de datos
+* Build command
+* Framework
+* Servidor propio
+
+La aplicación puede desplegarse directamente conectando el repositorio de GitHub con Vercel.
+
+🌐 **Demo:** https://ruta-coste.vercel.app/
+
+---
+
+## 📁 Estructura del proyecto
+
+```text
+RutaCoste/
+│
+├── index.html
+├── style.css
+├── app.js
+│
+├── aviso-legal.html
+├── privacidad.html
+├── cookies.html
+│
+├── robots.txt
+└── sitemap.xml
+```
+
+### Archivos principales
+
+| Archivo            | Función                        |
+| ------------------ | ------------------------------ |
+| `index.html`       | Página principal y calculadora |
+| `style.css`        | Diseño y estilos               |
+| `app.js`           | Lógica de la aplicación        |
+| `aviso-legal.html` | Aviso legal                    |
+| `privacidad.html`  | Política de privacidad         |
+| `cookies.html`     | Política de cookies            |
+| `robots.txt`       | Configuración para buscadores  |
+| `sitemap.xml`      | Mapa del sitio                 |
+
+---
+
+## 🔎 SEO
+
+RutaCoste incluye elementos básicos de SEO:
+
+* `title` optimizado
+* Meta description
+* URL canónica
+* Open Graph
+* Robots meta
+* `robots.txt`
+* `sitemap.xml`
+* Estructura semántica HTML
+* Contenido informativo sobre el cálculo del combustible
+* Preguntas frecuentes
+
+El objetivo es que la herramienta pueda posicionarse para búsquedas relacionadas con:
+
+* calcular coste de gasolina
+* calculadora de gasolina
+* coste de un viaje en coche
+* calcular combustible de un viaje
+* cuánto cuesta un viaje en coche
+* calcular gasto de gasolina
+* calculadora de combustible
+
+---
+
+## 📈 Próximas mejoras
+
+Algunas mejoras previstas para futuras versiones:
+
+* [ ] Añadir dominio propio
+* [ ] Crear más contenido orientado a búsquedas
+* [ ] Mejorar la precisión de los precios de combustible
+* [ ] Añadir cálculo de peajes
+* [ ] Añadir más opciones de vehículos
+* [ ] Mejorar el cálculo para rutas internacionales
+* [ ] Optimizar el rendimiento
+* [ ] Añadir estadísticas de uso
+* [ ] Migrar los servicios de demostración a infraestructura preparada para mayor tráfico
+
+---
+
+## 📄 Licencia
+
+Proyecto desarrollado como aplicación web independiente.
+
+Consulta las condiciones del repositorio para conocer los términos de uso del código.
+
+---
+
+## 🌐 Proyecto
+
+**RutaCoste**
+Calculadora de coste de combustible para viajes por carretera.
+
+👉 https://ruta-coste.vercel.app/
+
+👉 https://github.com/Pablorc222/RutaCoste
