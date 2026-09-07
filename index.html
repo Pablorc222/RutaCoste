@@ -19,7 +19,7 @@
   <title>RutaCoste | Calcula el coste de gasolina de tu viaje</title>
   <meta
     name="description"
-    content="Calcula cuÃ¡nto gastarÃ¡s en gasolina o diÃ©sel en cualquier viaje. Introduce origen, destino, consumo y precio del combustible y RutaCoste calcula el coste de tu ruta."
+    content="Calcula cuánto gastarás en gasolina o diésel en cualquier viaje. Introduce origen, destino, consumo y precio del combustible y RutaCoste calcula el coste de tu ruta."
   >
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://ruta-coste.vercel.app/">
@@ -28,7 +28,7 @@
   <meta property="og:title" content="RutaCoste | Calcula el coste de tu viaje">
   <meta
     property="og:description"
-    content="Calcula el coste de combustible de tu viaje por carretera. Gratis, rÃ¡pido y sin registro."
+    content="Calcula el coste de combustible de tu viaje por carretera. Gratis, rápido y sin registro."
   >
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ruta-coste.vercel.app/">
@@ -39,7 +39,7 @@
   <meta name="twitter:title" content="RutaCoste | Calcula el coste de tu viaje">
   <meta
     name="twitter:description"
-    content="Calcula cuÃ¡nto gastarÃ¡s en combustible en tu prÃ³ximo viaje por carretera."
+    content="Calcula cuánto gastarás en combustible en tu próximo viaje por carretera."
   >
 
   <!-- Fuentes -->
@@ -75,6 +75,60 @@
   "inLanguage": "es"
 }
 </script>
+<meta property="og:image" content="https://ruta-coste.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "RutaCoste",
+  "url": "https://ruta-coste.vercel.app/",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Web",
+  "description": "Calculadora gratuita para calcular el coste de combustible de un viaje en coche por carretera.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿RutaCoste incluye peajes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. RutaCoste calcula únicamente el coste de combustible. Si tu ruta incluye autopistas de peaje, súmalo aparte al resultado." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo de exacta es la distancia calculada?",
+      "acceptedAnswer": { "@type": "Answer", "text": "La distancia se calcula sobre la red de carreteras real, no en línea recta, así que suele ser muy cercana a la que marcaría un GPS. Puede variar ligeramente según la ruta exacta que elijas al conducir." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo calcular rutas fuera de España?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí. El buscador de origen y destino admite ciudades y direcciones de cualquier país; elige el resultado correcto en el desplegable y calcula igual que con una ruta nacional." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué moneda se muestra el resultado?",
+      "acceptedAnswer": { "@type": "Answer", "text": "RutaCoste detecta la moneda a partir del país de origen que elijas en el buscador y la aplica automáticamente al precio y al resultado final. Si no se detecta el país, se usa el euro por defecto." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿De dónde sale el precio del combustible por defecto?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Es un valor orientativo basado en el precio medio en España. Los precios varían por provincia, país y gasolinera, así que se recomienda actualizarlo con el precio real de tu zona." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿RutaCoste guarda mis búsquedas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Los cálculos se hacen en tu propio navegador y no se guarda el histórico de rutas que consultas." }
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="has-hero">
@@ -101,9 +155,9 @@
     <nav class="nav-links">
       <a href="#calculadora">Calculadora</a>
       <a href="#calcular-coste">Calcular coste</a>
-      <a href="#como-funciona">CÃ³mo funciona</a>
+      <a href="#como-funciona">Cómo funciona</a>
       <a href="#consumos">Consumos orientativos</a>
-      <a href="#internacional">Fuera de EspaÃ±a</a>
+      <a href="#internacional">Fuera de España</a>
       <a href="#faq">FAQ</a>
     </nav>
 
@@ -128,12 +182,12 @@
       </div>
 
       <h1>
-        Â¿CuÃ¡nto te va a costar la gasolina de tu prÃ³ximo viaje?
+        ¿Cuánto te va a costar la gasolina de tu próximo viaje?
       </h1>
 
       <p class="lead">
-        Escribe de dÃ³nde sales y a dÃ³nde vas â€” en EspaÃ±a o en cualquier otro paÃ­s.
-        RutaCoste calcula la distancia real por carretera y te dice cuÃ¡nto vas a gastar
+        Escribe de dónde sales y a dónde vas — en España o en cualquier otro país.
+        RutaCoste calcula la distancia real por carretera y te dice cuánto vas a gastar
         en combustible, sin registros ni descargas.
       </p>
 
@@ -148,14 +202,14 @@
 
       <div class="calc-card-head">
         <h2>Calculadora de ruta</h2>
-        <span>Gratis Â· sin registro</span>
+        <span>Gratis · sin registro</span>
       </div>
 
 
       <div
         class="vehicle-chips"
         role="group"
-        aria-label="Selecciona un tipo de vehÃ­culo orientativo"
+        aria-label="Selecciona un tipo de vehículo orientativo"
       >
 
         <button
@@ -163,7 +217,7 @@
           class="vchip"
           data-consumo="6.0"
         >
-          Utilitario pequeÃ±o
+          Utilitario pequeño
         </button>
 
         <button
@@ -208,7 +262,7 @@
               <input
                 type="text"
                 id="origen"
-                placeholder="Ciudad, pueblo o direcciÃ³n"
+                placeholder="Ciudad, pueblo o dirección"
                 required
               >
 
@@ -236,7 +290,7 @@
               <input
                 type="text"
                 id="destino"
-                placeholder="Ciudad, pueblo o direcciÃ³n"
+                placeholder="Ciudad, pueblo o dirección"
                 required
               >
 
@@ -365,7 +419,7 @@
           <div class="rb-item">
 
             <b id="res-km">
-              â€“
+              –
             </b>
 
             <span>
@@ -378,7 +432,7 @@
           <div class="rb-item">
 
             <b id="res-litros">
-              â€“
+              –
             </b>
 
             <span>
@@ -391,11 +445,11 @@
           <div class="rb-item">
 
             <b id="res-tiempo">
-              â€“
+              –
             </b>
 
             <span>
-              Tiempo de conducciÃ³n
+              Tiempo de conducción
             </span>
 
           </div>
@@ -418,7 +472,7 @@
 
 
 <!-- =========================================================
-     CÃ“MO FUNCIONA
+     CÓMO FUNCIONA
      ========================================================= -->
 
 <section id="como-funciona">
@@ -428,11 +482,11 @@
     <div class="section-head">
 
       <div class="eyebrow">
-        CÃ³mo funciona
+        Cómo funciona
       </div>
 
       <h2>
-        Una fÃ³rmula simple, sin cajas negras
+        Una fórmula simple, sin cajas negras
       </h2>
 
     </div>
@@ -451,8 +505,8 @@
         </b>
 
         <p>
-          Usamos cartografÃ­a de carreteras real para calcular los kilÃ³metros
-          entre tu origen y tu destino, no la distancia en lÃ­nea recta.
+          Usamos cartografía de carreteras real para calcular los kilómetros
+          entre tu origen y tu destino, no la distancia en línea recta.
         </p>
 
       </div>
@@ -469,9 +523,9 @@
         </b>
 
         <p>
-          Multiplicamos los kilÃ³metros por el consumo medio de tu coche
+          Multiplicamos los kilómetros por el consumo medio de tu coche
           (litros cada 100 km), el dato que suele aparecer en la ficha
-          tÃ©cnica del vehÃ­culo.
+          técnica del vehículo.
         </p>
 
       </div>
@@ -489,7 +543,7 @@
 
         <p>
           El resultado en litros se multiplica por el precio del combustible
-          que indiques, para darte una estimaciÃ³n del coste completo del viaje.
+          que indiques, para darte una estimación del coste completo del viaje.
         </p>
 
       </div>
@@ -516,14 +570,14 @@
       </div>
 
       <h2>
-        Â¿CÃ³mo calcular cuÃ¡nto cuesta un viaje en coche?
+        ¿Cómo calcular cuánto cuesta un viaje en coche?
       </h2>
 
       <p>
         Calcular el coste de un viaje en coche es sencillo si conoces
-        la distancia, el consumo de tu vehÃ­culo y el precio del combustible.
-        RutaCoste combina estos datos para ofrecerte una estimaciÃ³n del
-        gasto de gasolina o diÃ©sel de tu trayecto.
+        la distancia, el consumo de tu vehículo y el precio del combustible.
+        RutaCoste combina estos datos para ofrecerte una estimación del
+        gasto de gasolina o diésel de tu trayecto.
       </p>
 
     </div>
@@ -537,31 +591,31 @@
       <div class="seo-block">
 
         <h3>
-          Â¿CÃ³mo se calcula el gasto de gasolina de un viaje?
+          ¿Cómo se calcula el gasto de gasolina de un viaje?
         </h3>
 
         <p>
-          Para calcular cuÃ¡nto vas a gastar en combustible primero necesitas
+          Para calcular cuánto vas a gastar en combustible primero necesitas
           conocer la distancia del viaje y el consumo medio de tu coche.
-          El consumo normalmente se expresa en litros cada 100 kilÃ³metros
+          El consumo normalmente se expresa en litros cada 100 kilómetros
           (L/100 km).
         </p>
 
         <p>
-          La fÃ³rmula para calcular los litros necesarios es:
+          La fórmula para calcular los litros necesarios es:
         </p>
 
         <div class="formula">
-          Litros necesarios = distancia Ã— consumo Ã· 100
+          Litros necesarios = distancia × consumo ÷ 100
         </div>
 
         <p>
-          DespuÃ©s, multiplicamos los litros necesarios por el precio del
+          Después, multiplicamos los litros necesarios por el precio del
           combustible para obtener el coste aproximado del viaje.
         </p>
 
         <div class="formula">
-          Coste del viaje = litros necesarios Ã— precio por litro
+          Coste del viaje = litros necesarios × precio por litro
         </div>
 
       </div>
@@ -572,13 +626,13 @@
       <div class="seo-block">
 
         <h3>
-          Ejemplo: viaje de 500 kilÃ³metros
+          Ejemplo: viaje de 500 kilómetros
         </h3>
 
         <p>
           Imagina que vas a realizar un viaje de 500 km con un coche que
           consume 6,5 litros cada 100 km y el precio de la gasolina es
-          1,65 â‚¬ por litro.
+          1,65 € por litro.
         </p>
 
 
@@ -623,7 +677,7 @@
             </span>
 
             <strong>
-              53,63 â‚¬
+              53,63 €
             </strong>
           </div>
 
@@ -631,9 +685,9 @@
 
 
         <p>
-          Si el trayecto es de ida y vuelta, la distancia total serÃ­a de
-          1.000 km y el coste estimado de combustible serÃ­a aproximadamente
-          107,25 â‚¬.
+          Si el trayecto es de ida y vuelta, la distancia total sería de
+          1.000 km y el coste estimado de combustible sería aproximadamente
+          107,25 €.
         </p>
 
       </div>
@@ -644,12 +698,12 @@
       <div class="seo-block">
 
         <h3>
-          Â¿QuÃ© necesitas para calcular el coste de un viaje?
+          ¿Qué necesitas para calcular el coste de un viaje?
         </h3>
 
         <p>
           Solo necesitas tres datos principales: la distancia que vas a
-          recorrer, el consumo de tu vehÃ­culo y el precio actual del
+          recorrer, el consumo de tu vehículo y el precio actual del
           combustible.
         </p>
 
@@ -658,25 +712,25 @@
 
           <li>
             <strong>Distancia:</strong>
-            kilÃ³metros del trayecto por carretera.
+            kilómetros del trayecto por carretera.
           </li>
 
           <li>
             <strong>Consumo:</strong>
-            litros que consume tu coche cada 100 kilÃ³metros.
+            litros que consume tu coche cada 100 kilómetros.
           </li>
 
           <li>
             <strong>Precio:</strong>
-            coste actual de la gasolina o el diÃ©sel por litro.
+            coste actual de la gasolina o el diésel por litro.
           </li>
 
         </ul>
 
 
         <p>
-          Si no conoces el consumo exacto de tu vehÃ­culo, puedes utilizar
-          nuestros valores orientativos segÃºn el tipo de coche.
+          Si no conoces el consumo exacto de tu vehículo, puedes utilizar
+          nuestros valores orientativos según el tipo de coche.
         </p>
 
       </div>
@@ -687,13 +741,13 @@
       <div class="seo-block">
 
         <h3>
-          Â¿CuÃ¡nto cuesta viajar 100, 300, 500 o 1.000 km?
+          ¿Cuánto cuesta viajar 100, 300, 500 o 1.000 km?
         </h3>
 
         <p>
-          El coste depende principalmente del consumo del vehÃ­culo y del
+          El coste depende principalmente del consumo del vehículo y del
           precio del combustible. Como referencia, utilizando un consumo
-          de 6,5 L/100 km y un precio de 1,65 â‚¬ por litro:
+          de 6,5 L/100 km y un precio de 1,65 € por litro:
         </p>
 
 
@@ -727,7 +781,7 @@
             </span>
 
             <strong>
-              10,73 â‚¬
+              10,73 €
             </strong>
 
           </div>
@@ -744,7 +798,7 @@
             </span>
 
             <strong>
-              32,18 â‚¬
+              32,18 €
             </strong>
 
           </div>
@@ -761,7 +815,7 @@
             </span>
 
             <strong>
-              53,63 â‚¬
+              53,63 €
             </strong>
 
           </div>
@@ -778,7 +832,7 @@
             </span>
 
             <strong>
-              107,25 â‚¬
+              107,25 €
             </strong>
 
           </div>
@@ -787,8 +841,8 @@
 
 
         <p class="seo-note">
-          Son ejemplos orientativos. El coste real cambia segÃºn el consumo
-          del vehÃ­culo, el precio del combustible y las condiciones del viaje.
+          Son ejemplos orientativos. El coste real cambia según el consumo
+          del vehículo, el precio del combustible y las condiciones del viaje.
         </p>
 
       </div>
@@ -803,9 +857,9 @@
         </h3>
 
         <p>
-          En lugar de hacer los cÃ¡lculos manualmente, puedes utilizar
+          En lugar de hacer los cálculos manualmente, puedes utilizar
           nuestra calculadora de combustible. Introduce tu origen y destino,
-          selecciona el consumo de tu vehÃ­culo y aÃ±ade el precio actual
+          selecciona el consumo de tu vehículo y añade el precio actual
           del combustible.
         </p>
 
@@ -837,11 +891,11 @@
     <div class="section-head">
 
       <div class="eyebrow">
-        Â¿No sabes el consumo de tu coche?
+        ¿No sabes el consumo de tu coche?
       </div>
 
       <h2>
-        Valores orientativos por tipo de vehÃ­culo
+        Valores orientativos por tipo de vehículo
       </h2>
 
       <p>
@@ -868,7 +922,7 @@
             </th>
 
             <th>
-              DiÃ©sel (L/100km)
+              Diésel (L/100km)
             </th>
           </tr>
 
@@ -880,15 +934,15 @@
           <tr data-consumo="6.0">
 
             <td>
-              Utilitario pequeÃ±o (ej. Corsa, Ibiza)
+              Utilitario pequeño (ej. Corsa, Ibiza)
             </td>
 
             <td class="num">
-              5,5 â€“ 6,5
+              5,5 – 6,5
             </td>
 
             <td class="num">
-              4,5 â€“ 5,5
+              4,5 – 5,5
             </td>
 
           </tr>
@@ -901,11 +955,11 @@
             </td>
 
             <td class="num">
-              6,0 â€“ 7,5
+              6,0 – 7,5
             </td>
 
             <td class="num">
-              5,0 â€“ 6,0
+              5,0 – 6,0
             </td>
 
           </tr>
@@ -918,11 +972,11 @@
             </td>
 
             <td class="num">
-              7,5 â€“ 9,5
+              7,5 – 9,5
             </td>
 
             <td class="num">
-              6,0 â€“ 7,5
+              6,0 – 7,5
             </td>
 
           </tr>
@@ -935,11 +989,11 @@
             </td>
 
             <td class="num">
-              8,5 â€“ 11
+              8,5 – 11
             </td>
 
             <td class="num">
-              6,5 â€“ 8,5
+              6,5 – 8,5
             </td>
 
           </tr>
@@ -953,9 +1007,9 @@
 
     <p class="foot-note">
       Valores orientativos de consumo mixto (ciudad + carretera).
-      El consumo real depende del estilo de conducciÃ³n, el trÃ¡fico,
-      la carga del vehÃ­culo y el estado de las ruedas. Para un cÃ¡lculo
-      mÃ¡s preciso, usa el consumo medio que marca el ordenador de a bordo
+      El consumo real depende del estilo de conducción, el tráfico,
+      la carga del vehículo y el estado de las ruedas. Para un cálculo
+      más preciso, usa el consumo medio que marca el ordenador de a bordo
       de tu coche.
     </p>
 
@@ -975,7 +1029,7 @@
     <div class="section-head">
 
       <div class="eyebrow">
-        TambiÃ©n fuera de EspaÃ±a
+        También fuera de España
       </div>
 
       <h2>
@@ -990,18 +1044,18 @@
       <div>
 
         <p class="intl-text">
-          Escribe cualquier ciudad, pueblo o direcciÃ³n del mundo:
-          el buscador te mostrarÃ¡ coincidencias con su regiÃ³n y paÃ­s
-          para que elijas la correcta antes de calcular. Ãštil para viajes
+          Escribe cualquier ciudad, pueblo o dirección del mundo:
+          el buscador te mostrará coincidencias con su región y país
+          para que elijas la correcta antes de calcular. Útil para viajes
           internacionales, rutas transfronterizas o si simplemente vives
-          fuera de EspaÃ±a.
+          fuera de España.
         </p>
 
 
         <p class="intl-text last">
-          El precio que introduzcas se interpreta en la moneda del paÃ­s
+          El precio que introduzcas se interpreta en la moneda del país
           de origen (o del destino, si no seleccionas un origen de la lista):
-          verÃ¡s la moneda detectada junto al campo de precio, y el resultado
+          verás la moneda detectada junto al campo de precio, y el resultado
           final se muestra ya formateado en esa moneda.
         </p>
 
@@ -1062,12 +1116,12 @@
       <details>
 
         <summary>
-          Â¿RutaCoste incluye peajes?
+          ¿RutaCoste incluye peajes?
         </summary>
 
         <p>
-          No. RutaCoste calcula Ãºnicamente el coste de combustible.
-          Si tu ruta incluye autopistas de peaje, sÃºmalo aparte al resultado.
+          No. RutaCoste calcula únicamente el coste de combustible.
+          Si tu ruta incluye autopistas de peaje, súmalo aparte al resultado.
         </p>
 
       </details>
@@ -1076,13 +1130,13 @@
       <details>
 
         <summary>
-          Â¿CÃ³mo de exacta es la distancia calculada?
+          ¿Cómo de exacta es la distancia calculada?
         </summary>
 
         <p>
           La distancia se calcula sobre la red de carreteras real,
-          no en lÃ­nea recta, asÃ­ que suele ser muy cercana a la que
-          marcarÃ­a un GPS. Puede variar ligeramente segÃºn la ruta exacta
+          no en línea recta, así que suele ser muy cercana a la que
+          marcaría un GPS. Puede variar ligeramente según la ruta exacta
           que elijas al conducir (autopista vs. carretera secundaria,
           por ejemplo).
         </p>
@@ -1093,13 +1147,13 @@
       <details>
 
         <summary>
-          Â¿Puedo calcular rutas fuera de EspaÃ±a?
+          ¿Puedo calcular rutas fuera de España?
         </summary>
 
         <p>
-          SÃ­. El buscador de origen y destino admite ciudades y direcciones
-          de cualquier paÃ­s; elige el resultado correcto en el desplegable
-          (verÃ¡s la regiÃ³n y el paÃ­s junto a cada coincidencia) y calcula
+          Sí. El buscador de origen y destino admite ciudades y direcciones
+          de cualquier país; elige el resultado correcto en el desplegable
+          (verás la región y el país junto a cada coincidencia) y calcula
           igual que con una ruta nacional.
         </p>
 
@@ -1109,15 +1163,15 @@
       <details>
 
         <summary>
-          Â¿En quÃ© moneda se muestra el resultado?
+          ¿En qué moneda se muestra el resultado?
         </summary>
 
         <p>
-          RutaCoste detecta la moneda a partir del paÃ­s de origen que elijas
+          RutaCoste detecta la moneda a partir del país de origen que elijas
           en el buscador (o del destino, si no seleccionas un origen concreto)
-          y la aplica automÃ¡ticamente al precio y al resultado final â€” verÃ¡s
-          el cÃ³digo de moneda junto al campo de precio. Si no se detecta el
-          paÃ­s, se usa el euro por defecto. No se hace conversiÃ³n entre divisas:
+          y la aplica automáticamente al precio y al resultado final — verás
+          el código de moneda junto al campo de precio. Si no se detecta el
+          país, se usa el euro por defecto. No se hace conversión entre divisas:
           introduce el precio del combustible en la moneda que se te indique.
         </p>
 
@@ -1127,13 +1181,13 @@
       <details>
 
         <summary>
-          Â¿De dÃ³nde sale el precio del combustible por defecto?
+          ¿De dónde sale el precio del combustible por defecto?
         </summary>
 
         <p>
-          Es un valor orientativo basado en el precio medio en EspaÃ±a.
-          Los precios cambian constantemente y varÃ­an por provincia,
-          paÃ­s y gasolinera, asÃ­ que te recomendamos actualizarlo con
+          Es un valor orientativo basado en el precio medio en España.
+          Los precios cambian constantemente y varían por provincia,
+          país y gasolinera, así que te recomendamos actualizarlo con
           el precio que veas en tu zona antes de calcular.
         </p>
 
@@ -1143,13 +1197,13 @@
       <details>
 
         <summary>
-          Â¿RutaCoste guarda mis bÃºsquedas?
+          ¿RutaCoste guarda mis búsquedas?
         </summary>
 
         <p>
-          No. Los cÃ¡lculos se hacen en tu propio navegador y no guardamos
-          el histÃ³rico de rutas que consultas. Puedes ver mÃ¡s detalle en
-          nuestra <a href="privacidad.html">PolÃ­tica de Privacidad</a>.
+          No. Los cálculos se hacen en tu propio navegador y no guardamos
+          el histórico de rutas que consultas. Puedes ver más detalle en
+          nuestra <a href="privacidad.html">Política de Privacidad</a>.
         </p>
 
       </details>
@@ -1201,9 +1255,9 @@
 
 
     <p class="foot-note">
-      RutaCoste ofrece una estimaciÃ³n orientativa de coste de combustible.
-      No incluye peajes, ni tiene en cuenta el trÃ¡fico, el tipo de conducciÃ³n
-      o el estado del vehÃ­culo. Ãšsalo como referencia, no como cifra exacta.
+      RutaCoste ofrece una estimación orientativa de coste de combustible.
+      No incluye peajes, ni tiene en cuenta el tráfico, el tipo de conducción
+      o el estado del vehículo. Úsalo como referencia, no como cifra exacta.
     </p>
 
   </div>
@@ -1219,8 +1273,8 @@
 
   <p>
     Usamos cookies propias necesarias para el funcionamiento de la web.
-    Puedes leer mÃ¡s en nuestra
-    <a href="cookies.html">PolÃ­tica de Cookies</a>.
+    Puedes leer más en nuestra
+    <a href="cookies.html">Política de Cookies</a>.
   </p>
 
 
