@@ -1413,3 +1413,138 @@ footer .foot-note{
   }
 
 }
+/* =========================================================
+   PÁGINAS SEO
+   ========================================================= */
+
+.seo-content {
+  display: grid;
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.seo-block {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.seo-block h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+
+.seo-block p {
+  color: var(--ink-dim);
+  line-height: 1.7;
+}
+
+.seo-block ul {
+  color: var(--ink-dim);
+  line-height: 1.8;
+  padding-left: 22px;
+}
+
+.formula {
+  margin: 18px 0;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.example-calculation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.example-calculation > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.example-calculation span {
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+
+.example-calculation strong {
+  font-size: 18px;
+}
+
+.distance-table {
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.distance-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.distance-row:last-child {
+  border-bottom: 0;
+}
+
+.distance-header {
+  font-weight: 700;
+  background: var(--surface);
+}
+
+.distance-row span,
+.distance-row strong {
+  display: flex;
+  align-items: center;
+}
+
+.seo-note {
+  font-size: 14px;
+}
+
+.seo-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 13px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.seo-button:hover {
+  opacity: .9;
+}
+
+@media (max-width: 700px) {
+
+  .example-calculation {
+    grid-template-columns: 1fr;
+  }
+
+  .distance-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 14px;
+  }
+
+  .seo-block {
+    padding: 22px;
+  }
+
+}
