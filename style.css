@@ -1663,35 +1663,92 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+/* =========================================
+   HEADER UNIFICADO RUTACOSTE
+========================================= */
 
-/* ================================
+header {
+    width: 100%;
+    min-height: 76px;
+    background: #222b35;
+    border-bottom: 1px solid #394451;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+
+.logo {
+    color: #f5f2eb;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #d9ad55;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 28px;
+}
+
+nav a {
+    color: #b8c0c8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #d9ad55;
+}
+
+
+/* =========================================
    MÓVIL
-================================ */
+========================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 
     header {
-        height: auto;
-        padding: 20px;
+        padding: 18px 24px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 16px;
     }
 
     nav {
+        width: 100%;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 14px 20px;
     }
 
-    .hero {
-        min-height: auto;
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 16px 20px;
     }
 
-    .hero-content {
-        padding: 60px 24px;
+    .logo {
+        font-size: 20px;
     }
 
-    .hero h1 {
-        font-size: 42px;
+    nav a {
+        font-size: 13px;
     }
+
 }
