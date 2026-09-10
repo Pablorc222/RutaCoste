@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de coste por kilómetro | RutaCoste</title>
+
+    <meta name="description"
+        content="Calcula cuánto cuesta cada kilómetro que recorres con tu coche según el consumo de combustible y el precio de la gasolina.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745430115772287"
+        crossorigin="anonymous">
+    </script>
+
+    <style>
+        .calculator-page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .calculator-box {
+            background: #ffffff;
+            border: 1px solid #dbd8cb;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .calculator-box h2 {
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #171c1a;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid #cfcbbd;
+            border-radius: 9px;
+            font-size: 17px;
+        }
+
+        .calculate-button {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            padding: 17px;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 700;
+            background: #1f6f4a;
+            color: white;
+        }
+
+        .calculate-button:hover {
+            opacity: 0.9;
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #dbd8cb;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: #eef1ea;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .result-card span {
+            display: block;
+            font-size: 14px;
+            color: #5c655f;
+            margin-bottom: 8px;
+        }
+
+        .result-card strong {
+            font-size: 24px;
+            color: #171c1a;
+        }
+
+        .info-section {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 24px 70px;
+        }
+
+        .info-section h2 {
+            margin-top: 55px;
+        }
+
+        .info-section p,
+        .info-section li {
+            line-height: 1.8;
+        }
+
+        .formula-box {
+            background: #171c1a;
+            color: #eef1ea;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 17px;
+            overflow-x: auto;
+        }
+
+        .related-pages {
+            display: grid;
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .related-pages a {
+            padding: 18px 20px;
+            background: #ffffff;
+            border: 1px solid #dbd8cb;
+            border-radius: 10px;
+            color: #171c1a;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .related-pages a:hover {
+            border-color: #1f6f4a;
+        }
+
+        @media (max-width: 700px) {
+            .calculator-page {
+                padding: 50px 18px;
+            }
+
+            .calculator-box {
+                padding: 22px;
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">
+        Ruta<span>Coste</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Calculadora</a>
+        <a href="calcular-coste-gasolina.html">Gasolina</a>
+        <a href="calcular-coste-viaje.html">Coste de viaje</a>
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="index.html#consumos">Consumos</a>
+        <a href="index.html#faq">FAQ</a>
+    </nav>
+</header>
+
+
+<main>
+
+    <section class="calculator-page">
+
+        <p class="eyebrow">CALCULADORA DE COCHE</p>
+
+        <h1>Calculadora de coste por kilómetro</h1>
+
+        <p class="hero-text">
+            Calcula cuánto cuesta recorrer cada kilómetro con tu coche según
+            el consumo de combustible, el precio de la gasolina y la distancia.
+        </p>
+
+
+        <div class="calculator-box">
+
+            <h2>Calcula el coste de tu coche</h2>
+
+            <div class="form-group">
+                <label for="consumo">
+                    Consumo del coche (litros cada 100 km)
+                </label>
+
+                <input
+                    type="number"
+                    id="consumo"
+                    placeholder="Ejemplo: 6.5"
+                    step="0.1"
+                    min="0">
+            </div>
+
+
+            <div class="form-group">
+                <label for="precio">
+                    Precio del combustible (€ por litro)
+                </label>
+
+                <input
+                    type="number"
+                    id="precio"
+                    placeholder="Ejemplo: 1.70"
+                    step="0.01"
+                    min="0">
+            </div>
+
+
+            <div class="form-group">
+                <label for="kilometros">
+                    Kilómetros del trayecto
+                </label>
+
+                <input
+                    type="number"
+                    id="kilometros"
+                    placeholder="Ejemplo: 300"
+                    step="1"
+                    min="0">
+            </div>
+
+
+            <button class="calculate-button" onclick="calcular()">
+                Calcular coste →
+            </button>
+
+
+            <div class="results" id="results">
+
+                <h2>Resultado</h2>
+
+                <div class="result-grid">
+
+                    <div class="result-card">
+                        <span>Coste por kilómetro</span>
+                        <strong id="costeKm">0 €</strong>
+                    </div>
+
+                    <div class="result-card">
+                        <span>Coste cada 100 km</span>
+                        <strong id="coste100">0 €</strong>
+                    </div>
+
+                    <div class="result-card">
+                        <span>Coste del trayecto</span>
+                        <strong id="costeTotal">0 €</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="info-section">
+
+        <h2>¿Cómo calcular el coste por kilómetro de un coche?</h2>
+
+        <p>
+            Para calcular cuánto cuesta recorrer un kilómetro con tu coche,
+            primero necesitas conocer el consumo medio del vehículo y el precio
+            del combustible.
+        </p>
+
+        <div class="formula-box">
+            Coste por km = (consumo cada 100 km ÷ 100) × precio del combustible
+        </div>
+
+        <p>
+            Por ejemplo, si un coche consume 6 litros cada 100 kilómetros y la
+            gasolina cuesta 1,70 € por litro:
+        </p>
+
+        <div class="formula-box">
+            (6 ÷ 100) × 1,70 € = 0,102 € por kilómetro
+        </div>
+
+        <p>
+            Esto significa que recorrer cada kilómetro cuesta aproximadamente
+            10 céntimos solamente en combustible.
+        </p>
+
+
+        <h2>¿Qué gastos incluye esta calculadora?</h2>
+
+        <p>
+            Esta calculadora calcula el coste aproximado del combustible.
+            El coste real de utilizar un coche también puede incluir otros
+            gastos como mantenimiento, seguro, impuestos o depreciación.
+        </p>
+
+
+        <h2>Factores que pueden cambiar el coste</h2>
+
+        <ul>
+            <li>🚗 El consumo real del vehículo.</li>
+            <li>⛽ El precio del combustible.</li>
+            <li>🛣️ El tipo de carretera.</li>
+            <li>🚦 El tráfico.</li>
+            <li>❄️ El uso del aire acondicionado.</li>
+            <li>🏔️ Las pendientes del recorrido.</li>
+        </ul>
+
+
+        <h2>Otras calculadoras de RutaCoste</h2>
+
+        <div class="related-pages">
+
+            <a href="calcular-gasolina-por-km.html">
+                ⛽ Calcular gasolina por kilómetros →
+            </a>
+
+            <a href="calcular-coste-gasolina.html">
+                🚗 Calcular coste de gasolina →
+            </a>
+
+            <a href="calcular-coste-viaje.html">
+                🛣️ Calcular coste de un viaje →
+            </a>
+
+            <a href="index.html">
+                🗺️ Calculadora completa de RutaCoste →
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <a href="index.html">RutaCoste</a>
+    </div>
+
+    <p>
+        Calcula fácilmente el coste aproximado de tus viajes en coche.
+    </p>
+
+    <div class="footer-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+    </div>
+
+</footer>
+
+
+<script>
+
+function calcular() {
+
+    const consumo = parseFloat(
+        document.getElementById("consumo").value
+    );
+
+    const precio = parseFloat(
+        document.getElementById("precio").value
+    );
+
+    const kilometros = parseFloat(
+        document.getElementById("kilometros").value
+    );
+
+
+    if (
+        !consumo ||
+        !precio ||
+        !kilometros ||
+        consumo <= 0 ||
+        precio <= 0 ||
+        kilometros <= 0
+    ) {
+
+        alert("Por favor, introduce valores válidos.");
+
+        return;
+    }
+
+
+    const costeKm = (consumo / 100) * precio;
+
+    const coste100 = consumo * precio;
+
+    const costeTotal = costeKm * kilometros;
+
+
+    document.getElementById("costeKm").textContent =
+        costeKm.toFixed(3).replace(".", ",") + " €";
+
+    document.getElementById("coste100").textContent =
+        coste100.toFixed(2).replace(".", ",") + " €";
+
+    document.getElementById("costeTotal").textContent =
+        costeTotal.toFixed(2).replace(".", ",") + " €";
+
+
+    document.getElementById("results").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
