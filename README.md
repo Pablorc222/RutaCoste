@@ -4,7 +4,7 @@
 
 RutaCoste permite estimar el coste de combustible de cualquier trayecto por carretera introduciendo el origen, destino, consumo del vehículo y precio del combustible.
 
-🌐 **Web:** https://ruta-coste.vercel.app/
+🌐 **Web:** https://rutacoste.es/
 
 ---
 
