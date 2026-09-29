@@ -71,7 +71,7 @@
 
   async function getRoute(o, d) {
     const url = `https://router.project-osrm.org/route/v1/driving/${o.lon},${o.lat};${d.lon},${d.lat}?overview=full&geometries=geojson`;
-    const res = await fetch(url);
+    const res = await fetchWithTimeout(url, {}, 20000);
     if (!res.ok) throw new Error('No se ha podido calcular la ruta entre esos dos puntos.');
     const data = await res.json();
     if (!data.routes || !data.routes.length) throw new Error('No existe una ruta por carretera entre esos dos puntos.');
@@ -94,37 +94,52 @@
     return pts;
   }
 
+  async function fetchWithTimeout(url, opts, ms) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), ms);
+    try { return await fetch(url, Object.assign({}, opts, { signal: ctrl.signal })); }
+    finally { clearTimeout(t); }
+  }
+
   async function overpass(query) {
     let lastErr;
-    for (const ep of OVERPASS) {
-      try {
-        const res = await fetch(ep, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-          body: 'data=' + encodeURIComponent(query),
-        });
-        if (!res.ok) throw new Error('overpass ' + res.status);
-        return await res.json();
-      } catch (e) { lastErr = e; }
+    for (let round = 0; round < 2; round++) {
+      for (const ep of OVERPASS) {
+        try {
+          const res = await fetchWithTimeout(ep, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: 'data=' + encodeURIComponent(query),
+          }, 20000);
+          if (!res.ok) throw new Error('overpass ' + res.status);
+          return await res.json();
+        } catch (e) { lastErr = e; }
+      }
     }
     throw lastErr || new Error('overpass');
   }
 
   async function fetchStations(points, radiusM, onProgress) {
-    const CHUNK = 110;
+    const CHUNK = 25;            // pocos puntos por consulta: respuesta rápida
+    const PARALLEL = 3;          // consultas simultáneas
     const found = new Map();
     const chunks = [];
     for (let i = 0; i < points.length; i += CHUNK - 1) {
       chunks.push(points.slice(i, i + CHUNK));
       if (i + CHUNK >= points.length) break;
     }
-    for (let c = 0; c < chunks.length; c++) {
-      onProgress(c + 1, chunks.length);
-      const poly = chunks[c].map((p) => `${p[0].toFixed(5)},${p[1].toFixed(5)}`).join(',');
-      const q = `[out:json][timeout:45];nwr["amenity"="fuel"](around:${radiusM},${poly});out center tags;`;
-      const data = await overpass(q);
-      (data.elements || []).forEach((el) => found.set(el.type + el.id, el));
+    let done = 0, next = 0;
+    async function worker() {
+      while (next < chunks.length) {
+        const c = chunks[next++];
+        const poly = c.map((p) => `${p[0].toFixed(5)},${p[1].toFixed(5)}`).join(',');
+        const q = `[out:json][timeout:20];nwr["amenity"="fuel"](around:${radiusM},${poly});out center tags;`;
+        const data = await overpass(q);
+        (data.elements || []).forEach((el) => found.set(el.type + el.id, el));
+        onProgress(++done, chunks.length);
+      }
     }
+    await Promise.all(Array.from({ length: Math.min(PARALLEL, chunks.length) }, worker));
     return [...found.values()];
   }
 
@@ -366,7 +381,7 @@
       }
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
-      const isNet = err && (err.message === 'overpass' || /overpass|Failed to fetch|NetworkError/i.test(err.message || ''));
+      const isNet = err && (err.message === 'overpass' || /overpass|Failed to fetch|NetworkError|abort/i.test(err.message || ''));
       show('error', isNet
         ? 'El servicio público de datos de gasolineras está saturado ahora mismo. Espera unos segundos e inténtalo de nuevo.'
         : (err.message || 'Ha ocurrido un error inesperado. Inténtalo de nuevo.'));
