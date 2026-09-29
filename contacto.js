@@ -55,7 +55,10 @@
         }),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || json.success === 'false' || json.success === false) throw new Error('send');
+      if (!res.ok || json.success === 'false' || json.success === false) {
+        console.warn('FormSubmit:', res.status, json);
+        throw new Error(json.message || 'send');
+      }
       show('ok', '<strong>¡Mensaje enviado!</strong> Gracias por escribirnos. Te responderemos por correo lo antes posible.');
       form.reset();
     } catch (err) {
