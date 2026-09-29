@@ -1,0 +1,462 @@
+/* ==========================================================================
+   RutaCoste — páginas nuevas: Gasolineras en ruta + Contacto
+   Paleta heredada: asfalto #1c232b · dorado #d9ad55 · ruta #1f6f4a · papel #eef1ea
+   ========================================================================== */
+
+.x-hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 88% -10%, rgba(217,173,85,.16), transparent 60%),
+    radial-gradient(700px 400px at -5% 110%, rgba(31,111,74,.28), transparent 60%),
+    linear-gradient(180deg,#1c232b 0%, #161c22 100%);
+  padding:84px 0 110px;
+  color:#f5f2eb;
+}
+
+/* Trazo de carretera decorativo */
+.x-hero::before{
+  content:"";
+  position:absolute;
+  left:-5%; right:-5%; bottom:34px;
+  height:2px;
+  background:repeating-linear-gradient(90deg,rgba(217,173,85,.55) 0 26px,transparent 26px 52px);
+  opacity:.5;
+}
+.x-hero::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:36px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.28));
+}
+
+.x-hero .wrap{ position:relative; z-index:1; }
+
+.x-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  color:#d9ad55;
+  margin-bottom:22px;
+}
+.x-eyebrow::before{
+  content:"";
+  width:28px; height:2px;
+  background:#d9ad55;
+  border-radius:2px;
+}
+
+.x-hero h1{
+  font-size:clamp(36px,5vw,60px);
+  line-height:1.06;
+  max-width:760px;
+  margin-bottom:20px;
+  color:#f5f2eb;
+}
+.x-hero p.x-lead{
+  color:#c9d0d6;
+  font-size:18px;
+  line-height:1.7;
+  max-width:680px;
+  margin:0;
+}
+
+/* --------------------------------------------------------------------------
+   Tarjeta flotante (buscador / formulario)
+   -------------------------------------------------------------------------- */
+.x-float{
+  position:relative;
+  z-index:2;
+  margin-top:-64px;
+  padding:0 0 24px;
+}
+
+.x-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:30px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 30px 60px -28px rgba(20,26,24,.35);
+}
+
+.x-card-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+  padding-bottom:16px;
+  border-bottom:1px dashed var(--line);
+}
+.x-card-head h2{ font-size:22px; }
+.x-card-head span{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--ink-dim);
+}
+
+.x-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.x-grid .span2{ grid-column:span 2; }
+
+/* Selector de radio */
+.x-seg{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.x-seg input{ position:absolute; opacity:0; pointer-events:none; }
+.x-seg label{
+  cursor:pointer;
+  padding:9px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fdfcfa;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink-dim);
+  transition:all .15s ease;
+}
+.x-seg label:hover{ border-color:#d9ad55; }
+.x-seg input:checked + label{
+  background:#1c232b;
+  color:#f5f2eb;
+  border-color:#1c232b;
+}
+.x-seg input:focus-visible + label{ outline:2px solid #d9ad55; outline-offset:2px; }
+
+.x-field-label{
+  font-size:13px;
+  color:var(--ink-dim);
+  font-weight:600;
+  margin-bottom:8px;
+  display:block;
+}
+
+/* Botones */
+.x-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:26px;
+  width:100%;
+  padding:16px 26px;
+  border:0;
+  border-radius:12px;
+  background:#1f6f4a;
+  color:#fff;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background .2s ease, transform .1s ease, box-shadow .2s ease;
+  box-shadow:0 12px 24px -14px rgba(31,111,74,.7);
+}
+.x-btn:hover{ background:#164f36; }
+.x-btn:active{ transform:translateY(1px); }
+.x-btn:disabled{ opacity:.65; cursor:progress; }
+
+.x-msg{
+  display:none;
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:10px;
+  font-size:14.5px;
+}
+.x-msg.error{ background:#fbeee9; border:1px solid #e6c3b6; color:#8a2f20; }
+.x-msg.ok{ background:#e9f4ee; border:1px solid #b9dcc8; color:#164f36; }
+.x-msg.info{ background:#f6f1e3; border:1px solid #e6d9b3; color:#6b5216; }
+
+/* --------------------------------------------------------------------------
+   Resultados: resumen, regla de ruta, mapa y lista
+   -------------------------------------------------------------------------- */
+.x-results{ display:none; padding:36px 0 20px; }
+
+.x-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:26px;
+}
+.x-stat{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 20px;
+}
+.x-stat small{
+  display:block;
+  font-size:12px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--ink-dim);
+  font-weight:600;
+  margin-bottom:6px;
+}
+.x-stat b{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:28px;
+  color:var(--ink);
+}
+.x-stat b em{ font-style:normal; font-size:15px; color:var(--ink-dim); font-weight:500; margin-left:4px; }
+
+/* Regla: la ruta como una línea con marcas */
+.x-ruler{
+  background:#1c232b;
+  border-radius:16px;
+  padding:22px 24px 26px;
+  margin-bottom:26px;
+  color:#c9d0d6;
+}
+.x-ruler-top{
+  display:flex; justify-content:space-between;
+  font-size:13px; font-weight:600; margin-bottom:26px;
+}
+.x-ruler-top span:first-child{ color:#f5f2eb; }
+.x-ruler-track{
+  position:relative;
+  height:6px;
+  border-radius:6px;
+  background:linear-gradient(90deg,#1f6f4a,#2d9a68 60%,#d9ad55);
+}
+.x-tick{
+  position:absolute;
+  top:50%;
+  width:10px; height:10px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:#f5f2eb;
+  border:2px solid #1c232b;
+  box-shadow:0 0 0 1px rgba(245,242,235,.45);
+  cursor:pointer;
+  transition:transform .15s ease, background .15s ease;
+}
+.x-tick:hover,.x-tick.active{ transform:translate(-50%,-50%) scale(1.7); background:#d9ad55; }
+.x-ruler-foot{
+  display:flex; justify-content:space-between;
+  margin-top:16px; font-size:12px;
+  font-family:'IBM Plex Mono',monospace; color:#8f9aa3;
+}
+
+.x-split{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+  gap:22px;
+  align-items:start;
+}
+
+#gas-map{
+  height:620px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  background:#e4e8df;
+  position:sticky;
+  top:96px;
+}
+
+.x-list-wrap{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+.x-list-head{
+  padding:16px 18px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.x-filters{ display:flex; flex-wrap:wrap; gap:8px; }
+.x-chip{
+  border:1px solid var(--line);
+  background:#fdfcfa;
+  padding:7px 13px;
+  border-radius:999px;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink-dim);
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.x-chip:hover{ border-color:#d9ad55; }
+.x-chip.active{ background:#1f6f4a; border-color:#1f6f4a; color:#fff; }
+
+.x-list{
+  max-height:560px;
+  overflow-y:auto;
+  margin:0; padding:0; list-style:none;
+}
+.x-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:14px;
+  padding:16px 18px;
+  border-bottom:1px solid #efece2;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+.x-item:last-child{ border-bottom:0; }
+.x-item:hover,.x-item.active{ background:#f7f5ee; }
+
+.x-km{
+  text-align:center;
+  font-family:'IBM Plex Mono',monospace;
+  line-height:1.1;
+}
+.x-km b{ display:block; font-size:17px; color:var(--ink); }
+.x-km span{ font-size:10.5px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.6px; }
+
+.x-info h3{ font-size:16px; margin-bottom:3px; }
+.x-info .sub{ font-size:13px; color:var(--ink-dim); margin:0 0 8px; }
+.x-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+.x-tag{
+  font-size:11.5px; font-weight:600;
+  padding:3px 9px; border-radius:999px;
+  background:#e7f2ec; color:#164f36;
+}
+.x-tag.gold{ background:#f8eed6; color:#6b5216; }
+.x-tag.grey{ background:#eeeeea; color:#555d57; }
+
+.x-empty{
+  padding:40px 24px; text-align:center; color:var(--ink-dim); font-size:15px;
+}
+
+.x-note{
+  margin-top:18px;
+  font-size:13.5px;
+  color:var(--ink-dim);
+  line-height:1.65;
+}
+
+/* Marcador de mapa */
+.x-pin{
+  width:14px; height:14px; border-radius:50%;
+  background:#d9ad55; border:2.5px solid #1c232b;
+  box-shadow:0 2px 6px rgba(0,0,0,.35);
+}
+.x-pin.active{ background:#1f6f4a; transform:scale(1.5); }
+.leaflet-popup-content{ font-family:'Inter',sans-serif; font-size:13.5px; }
+.leaflet-popup-content b{ font-family:'Space Grotesk',sans-serif; font-size:15px; }
+
+/* --------------------------------------------------------------------------
+   Bloques de contenido informativo
+   -------------------------------------------------------------------------- */
+.x-info-section{ padding:56px 0 24px; }
+.x-info-section .x-eyebrow{ color:#b8862e; }
+.x-info-section .x-eyebrow::before{ background:#b8862e; }
+.x-info-section h2{ font-size:clamp(26px,3vw,34px); max-width:620px; margin-bottom:14px; }
+.x-info-section > .wrap > p.x-intro{ color:var(--ink-dim); max-width:640px; margin:0 0 30px; font-size:16.5px; }
+
+.x-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+}
+.x-info-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.x-info-card:hover{
+  transform:translateY(-3px);
+  border-color:#d9ad55;
+  box-shadow:0 18px 34px -22px rgba(28,35,43,.5);
+}
+.x-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:10px;
+  background:#1c232b; color:#d9ad55;
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px;
+  margin-bottom:14px;
+}
+.x-info-card h3{ font-size:18px; margin-bottom:8px; }
+.x-info-card p{ margin:0; color:var(--ink-dim); font-size:15px; }
+
+/* --------------------------------------------------------------------------
+   Contacto
+   -------------------------------------------------------------------------- */
+.x-contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+  gap:22px;
+  align-items:start;
+}
+.x-form .field textarea{
+  font-family:inherit;
+  font-size:16px;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:#fdfcfa;
+  color:var(--ink);
+  width:100%;
+  min-height:170px;
+  resize:vertical;
+}
+.x-form .field textarea:focus{
+  outline:2px solid var(--route);
+  outline-offset:1px;
+  border-color:var(--route);
+}
+.x-hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+.x-consent{
+  display:flex; gap:10px; align-items:flex-start;
+  font-size:13.5px; color:var(--ink-dim);
+}
+.x-consent input{ margin-top:4px; width:16px; height:16px; accent-color:#1f6f4a; }
+
+.x-side{
+  background:#1c232b;
+  color:#c9d0d6;
+  border-radius:18px;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+}
+.x-side::after{
+  content:"";
+  position:absolute; right:-60px; bottom:-60px;
+  width:200px; height:200px; border-radius:50%;
+  background:radial-gradient(circle,rgba(217,173,85,.22),transparent 70%);
+}
+.x-side h3{ color:#f5f2eb; font-size:20px; margin-bottom:12px; }
+.x-side p{ margin:0 0 16px; font-size:15px; }
+.x-side ul{ padding-left:18px; margin:0 0 20px; font-size:14.5px; }
+.x-side li{ margin-bottom:8px; }
+.x-side a{ color:#d9ad55; font-weight:600; word-break:break-all; }
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width:900px){
+  .x-split,.x-contact-grid{ grid-template-columns:1fr; }
+  #gas-map{ position:static; height:420px; }
+  .x-stats{ grid-template-columns:repeat(2,1fr); }
+  .x-list{ max-height:none; }
+}
+@media (max-width:640px){
+  .x-hero{ padding:56px 0 96px; }
+  .x-card{ padding:22px 18px; }
+  .x-grid{ grid-template-columns:1fr; }
+  .x-grid .span2{ grid-column:span 1; }
+  .x-stat b{ font-size:23px; }
+}
