@@ -1,6 +1,6 @@
 // RutaCoste — Gasolineras en ruta
-// Ruta: OSRM (demo). Gasolineras: OpenStreetMap vía Overpass API (amenity=fuel).
-// Nota: OpenStreetMap no incluye precios en tiempo real; muestra ubicación y servicios cuando constan.
+// Ruta: OSRM. Gasolineras: Ministerio para la Transición Ecológica (precios reales) vía /api/gasolineras.
+// Si esa API falla o la ruta sale de España, se usa OpenStreetMap (Overpass) como respaldo, sin precios.
 
 (function () {
   'use strict';
@@ -143,6 +143,73 @@
     return [...found.values()];
   }
 
+  /* ---------------- Ministerio: estaciones con precios reales (España) */
+  async function fetchMinisterio(coords, radiusKm) {
+    let minLat = 90, maxLat = -90, minLon = 180, maxLon = -180;
+    for (const c of coords) {
+      if (c[0] < minLat) minLat = c[0];
+      if (c[0] > maxLat) maxLat = c[0];
+      if (c[1] < minLon) minLon = c[1];
+      if (c[1] > maxLon) maxLon = c[1];
+    }
+    const pad = (radiusKm + 1) / 111;
+    const bbox = [minLat - pad, minLon - pad, maxLat + pad, maxLon + pad].map((n) => n.toFixed(5)).join(',');
+    const res = await fetchWithTimeout('/api/gasolineras?bbox=' + bbox, {}, 40000);
+    if (!res.ok) throw new Error('ministerio ' + res.status);
+    const data = await res.json();
+    return data.stations || [];
+  }
+
+  function buildFromMinisterio(m, coords, radiusM) {
+    const loc = locate(coords, m.lat, m.lon);
+    if (loc.offsetKm * 1000 > radiusM * 1.15) return null;
+    const prices = {};
+    const fuels = [];
+    const add = (name, v) => { if (v) { fuels.push(name); prices[name] = v; } };
+    add('Gasolina 95', m.p.g95);
+    add('Gasolina 98', m.p.g98);
+    add('Diésel', m.p.d);
+    add('Diésel Premium', m.p.dp);
+    add('GLP', m.p.glp);
+    add('GNC', m.p.gnc);
+    const hours = m.hours || '';
+    return {
+      id: m.id, lat: m.lat, lon: m.lon,
+      name: m.name,
+      brand: '',
+      place: [m.addr, m.city].filter(Boolean).join(', '),
+      fuels, prices, cheap: [],
+      is24: /^L-D:\s*24H$/i.test(hours.trim()),
+      hours,
+      km: loc.km, offset: loc.offsetKm,
+    };
+  }
+
+  function markCheapest(list) {
+    ['Gasolina 95', 'Diésel'].forEach((f) => {
+      let best = null;
+      list.forEach((s) => { if (s.prices && s.prices[f] && (!best || s.prices[f] < best.prices[f])) best = s; });
+      if (best) best.cheap.push(f);
+    });
+  }
+
+  async function findStations(coords, points, radiusKm) {
+    // 1) Ministerio (precios reales)
+    try {
+      const raw = await fetchMinisterio(coords, radiusKm);
+      const list = raw.map((m) => buildFromMinisterio(m, coords, radiusKm * 1000)).filter(Boolean);
+      if (list.length) { markCheapest(list); return { list, source: 'ministerio' }; }
+    } catch (e) { /* seguimos con OpenStreetMap */ }
+
+    // 2) Respaldo: OpenStreetMap
+    btn.textContent = 'Buscando gasolineras…';
+    const raw = await fetchStations(points, radiusKm * 1000, (i, n) => {
+      btn.textContent = n > 1 ? `Buscando gasolineras (${i}/${n})…` : 'Buscando gasolineras…';
+    });
+    const list = raw.map((el) => buildStation(el, coords, radiusKm * 1000)).filter(Boolean);
+    return { list, source: 'osm' };
+  }
+
   function locate(coords, lat, lon) {
     // Punto de la ruta más cercano (aprox.) → km recorridos y desvío
     let best = 0, bestD = Infinity;
@@ -182,7 +249,7 @@
       name: t.name || t.brand || t.operator || 'Gasolinera',
       brand: t.brand && t.brand !== t.name ? t.brand : '',
       place: [t['addr:street'], t['addr:city']].filter(Boolean).join(', '),
-      fuels,
+      fuels, prices: {}, cheap: [],
       is24,
       hours,
       km: loc.km,
@@ -263,7 +330,8 @@
     listEl.innerHTML = visible.map((s) => {
       const tags = [];
       if (s.is24) tags.push('<span class="x-tag gold">24 horas</span>');
-      s.fuels.forEach((f) => tags.push(`<span class="x-tag">${esc(f)}</span>`));
+      s.cheap.forEach((f) => tags.push(`<span class="x-tag gold">Más barata en ruta: ${esc(f)}</span>`));
+      s.fuels.forEach((f) => tags.push(`<span class="x-tag">${esc(f)}${s.prices[f] ? ' · ' + fmt(s.prices[f], 3) + ' €' : ''}</span>`));
       if (!s.is24 && s.hours) tags.push(`<span class="x-tag grey">${esc(s.hours.length > 34 ? s.hours.slice(0, 34) + '…' : s.hours)}</span>`);
       if (!tags.length) tags.push('<span class="x-tag grey">Servicios sin especificar</span>');
       const sub = [s.brand, s.place].filter(Boolean).join(' · ');
@@ -350,11 +418,12 @@
 
       const points = samplePoints(coords, radiusKm);
       btn.textContent = 'Buscando gasolineras…';
-      const raw = await fetchStations(points, radiusKm * 1000, (i, n) => {
-        btn.textContent = n > 1 ? `Buscando gasolineras (${i}/${n})…` : 'Buscando gasolineras…';
-      });
-
-      stations = raw.map((el) => buildStation(el, coords, radiusKm * 1000)).filter(Boolean).sort((a, b) => a.km - b.km);
+      const found = await findStations(coords, points, radiusKm);
+      stations = found.list.sort((a, b) => a.km - b.km);
+      const note = document.getElementById('gas-note');
+      if (note) note.textContent = found.source === 'ministerio'
+        ? 'Precios y estaciones del Ministerio para la Transición Ecológica (España), actualizados varias veces al día. Los precios pueden variar: confirma el importe en el surtidor.'
+        : 'No se han podido consultar los precios oficiales, así que los datos proceden de OpenStreetMap, un mapa colaborativo: algunas estaciones pueden faltar y no se muestran precios.';
 
       // Resumen
       const marks = [0, ...stations.map((s) => s.km), totalKm];
