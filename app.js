@@ -244,6 +244,9 @@
     onSelect: (sel) => setCurrency(sel.countryCode, false),
   });
 
+  // Expuesto para que otras páginas (p. ej. gasolineras en ruta) reutilicen el autocompletado
+  window.RutaCoste = { origenAC, destinoAC, searchPlaces };
+
   /* ------------------------------------------------------------------ */
   /* Selector rápido de vehículo                                        */
   /* ------------------------------------------------------------------ */
