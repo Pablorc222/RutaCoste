@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Consentimiento de cookies (Google Consent Mode v2) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+</script>
+<!-- Google Tag Manager -->
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MS7G295H');
+</script>
+<!-- End Google Tag Manager -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745430115772287" crossorigin="anonymous"></script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gasolineras en tu ruta | Mapa de estaciones de servicio | RutaCoste</title>
+  <meta name="description" content="Consulta todas las gasolineras que hay a lo largo de tu ruta en coche. Mapa, kilómetros exactos y servicios de cada estación de servicio para planificar tus paradas.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.rutacoste.es/gasolineras-en-ruta.html">
+  <meta property="og:title" content="Gasolineras en tu ruta | Mapa de estaciones de servicio | RutaCoste">
+  <meta property="og:description" content="Consulta todas las gasolineras que hay a lo largo de tu ruta en coche. Mapa, kilómetros exactos y servicios de cada estación de servicio para planificar tus paradas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.rutacoste.es/gasolineras-en-ruta.html">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://www.rutacoste.es/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extras.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS7G295H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+  <a href="index.html" class="logo">Ruta<span>Coste</span></a>
+  <nav>
+    <a href="index.html#calculadora">Calculadora</a>
+    <a href="gasolineras-en-ruta.html" aria-current="page">Gasolineras en ruta</a>
+    <a href="calcular-coste-gasolina.html">Gasolina</a>
+    <a href="calcular-coste-viaje.html">Coste de viaje</a>
+    <a href="calcular-coste-por-kilometro.html">Coste por km</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="x-hero" style="padding-bottom:110px">
+  <div class="wrap">
+    <div class="x-eyebrow">Mapa de estaciones de servicio</div>
+    <h1>Todas las gasolineras que encontrarás en tu ruta</h1>
+    <p class="x-lead">
+      Escribe de dónde sales y a dónde vas. Verás el recorrido sobre el mapa y cada estación de servicio
+      ordenada por el kilómetro en el que aparece, para que sepas de antemano dónde puedes parar.
+    </p>
+  </div>
+</section>
+
+<section class="x-float" style="padding-top:0">
+  <div class="wrap">
+    <div class="x-card">
+      <div class="x-card-head">
+        <h2>Consulta tu recorrido</h2>
+        <span>Datos de OpenStreetMap</span>
+      </div>
+
+      <form id="gas-form" autocomplete="off">
+        <div class="x-grid">
+
+          <div class="field autocomplete">
+            <label for="origen">Origen</label>
+            <div class="ac-input-wrap">
+              <input type="text" id="origen" placeholder="Ciudad, pueblo o dirección" required>
+              <span class="ac-badge"></span>
+              <div class="ac-list" id="origen-list" role="listbox"></div>
+            </div>
+          </div>
+
+          <div class="field autocomplete">
+            <label for="destino">Destino</label>
+            <div class="ac-input-wrap">
+              <input type="text" id="destino" placeholder="Ciudad, pueblo o dirección" required>
+              <span class="ac-badge"></span>
+              <div class="ac-list" id="destino-list" role="listbox"></div>
+            </div>
+          </div>
+
+          <div class="span2">
+            <span class="x-field-label">Distancia máxima a la carretera</span>
+            <div class="x-seg" role="radiogroup" aria-label="Distancia máxima a la carretera">
+              <input type="radio" name="radio" id="r05" value="0.5"><label for="r05">500 m</label>
+              <input type="radio" name="radio" id="r1" value="1"><label for="r1">1 km</label>
+              <input type="radio" name="radio" id="r2" value="2" checked><label for="r2">2 km</label>
+              <input type="radio" name="radio" id="r5" value="5"><label for="r5">5 km</label>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="x-btn" id="gas-btn">Ver gasolineras de la ruta</button>
+        <div class="x-msg" id="gas-msg" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section class="x-results" id="gas-results" style="padding-top:36px">
+  <div class="wrap">
+
+    <div class="x-stats">
+      <div class="x-stat"><small>Distancia</small><b id="st-km">—</b></div>
+      <div class="x-stat"><small>Tiempo aprox.</small><b id="st-time">—</b></div>
+      <div class="x-stat"><small>Gasolineras</small><b id="st-count">—</b></div>
+      <div class="x-stat"><small>Tramo más largo sin ninguna</small><b id="st-gap">—</b></div>
+    </div>
+
+    <div class="x-ruler">
+      <div class="x-ruler-top"><span id="ruler-from">Origen</span><span id="ruler-to">Destino</span></div>
+      <div class="x-ruler-track" id="ruler-track"></div>
+      <div class="x-ruler-foot"><span>km 0</span><span id="ruler-end"></span></div>
+    </div>
+
+    <div class="x-split">
+      <div id="gas-map" aria-label="Mapa de la ruta con las gasolineras"></div>
+
+      <div class="x-list-wrap">
+        <div class="x-list-head">
+          <strong id="gas-count" style="font-family:'Space Grotesk',sans-serif;font-size:18px">0 gasolineras</strong>
+          <div class="x-filters" id="gas-filters">
+            <button type="button" class="x-chip active" data-filter="all">Todas</button>
+            <button type="button" class="x-chip" data-filter="24h">24 horas</button>
+            <button type="button" class="x-chip" data-filter="diesel">Diésel</button>
+            <button type="button" class="x-chip" data-filter="g95">Gasolina 95</button>
+            <button type="button" class="x-chip" data-filter="glp">GLP</button>
+          </div>
+        </div>
+        <ul class="x-list" id="gas-list"></ul>
+      </div>
+    </div>
+
+    <p class="x-note">
+      La información procede de OpenStreetMap, un mapa colaborativo: algunas estaciones pueden faltar y no todas
+      indican su horario o combustibles. Aquí no se muestran precios porque cambian a diario;
+      consulta el precio en el cartel de la propia gasolinera.
+    </p>
+  </div>
+</section>
+
+<!-- CONTENIDO INFORMATIVO -->
+<section class="x-info-section">
+  <div class="wrap">
+    <div class="x-eyebrow">Guía rápida</div>
+    <h2>Cómo planificar las paradas de un viaje largo</h2>
+    <p class="x-intro">
+      Saber de antemano dónde hay estaciones de servicio evita quedarse justo de combustible en tramos
+      despoblados y te permite elegir con calma dónde parar.
+    </p>
+
+    <div class="x-cards">
+      <article class="x-info-card">
+        <div class="x-num">01</div>
+        <h3>Repostar antes de la reserva</h3>
+        <p>Conviene parar cuando el depósito baje a un cuarto. En autovías con pocas salidas, el dato del «tramo más largo sin gasolineras» te indica hasta dónde llega tu autonomía.</p>
+      </article>
+      <article class="x-info-card">
+        <div class="x-num">02</div>
+        <h3>Distancia a la carretera</h3>
+        <p>Una gasolinera a 500 m de la ruta suele suponer un desvío de pocos minutos. A 5 km puede compensar solo si buscas un servicio concreto, como GLP o apertura 24 horas.</p>
+      </article>
+      <article class="x-info-card">
+        <div class="x-num">03</div>
+        <h3>Horarios y viajes nocturnos</h3>
+        <p>Si viajas de noche o en festivos, filtra por estaciones abiertas las 24 horas. Muchas gasolineras rurales cierran a media tarde o los domingos.</p>
+      </article>
+      <article class="x-info-card">
+        <div class="x-num">04</div>
+        <h3>Combustible según tu vehículo</h3>
+        <p>No todas las estaciones ofrecen diésel, gasolina 98, GLP o GNC. Usa los filtros para ver solo las que sirven el combustible de tu coche.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="x-info-section" style="padding-bottom:70px">
+  <div class="wrap">
+    <div class="x-eyebrow">Calcula también el gasto</div>
+    <h2>¿Cuánto costará el combustible del viaje?</h2>
+    <p class="x-intro">Con la misma ruta puedes estimar los litros y el coste de gasolina o diésel.</p>
+    <a class="btn" href="index.html#calculadora">Ir a la calculadora de ruta →</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="index.html#calculadora">Calculadora</a>
+      <a href="gasolineras-en-ruta.html">Gasolineras en ruta</a>
+      <a href="calcular-coste-gasolina.html">Coste gasolina</a>
+      <a href="calcular-coste-viaje.html">Coste viaje</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+    </div>
+    <p class="foot-note">
+      RutaCoste es un proyecto informativo e independiente. Los datos mostrados son orientativos
+      y proceden de OpenStreetMap y otros servicios públicos.
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+<script src="gasolineras.js"></script>
+
+<div id="cookie-banner">
+  <p>
+    Usamos cookies propias y de terceros (Google) para el funcionamiento de la web,
+    medir el tráfico y, si lo aceptas, mostrar publicidad personalizada.
+    Puedes leer más en nuestra <a href="cookies.html">Política de Cookies</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-accept" id="cookie-accept">Aceptar</button>
+    <button class="cookie-reject" id="cookie-reject">Rechazar</button>
+  </div>
+</div>
+</body>
+</html>
