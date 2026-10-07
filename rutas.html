@@ -44,6 +44,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+.data-table-wrap{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+.data-table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px;background:#fff}
+.data-table th,.data-table td{padding:11px 14px;border:1px solid #dbd8cb;text-align:left}
+.data-table th{background:#171c1a;color:#eef1ea;font-weight:600}
+.data-table td.n,.data-table th.n{text-align:right;white-space:nowrap}
+.data-table tr.tot td{font-weight:700;background:#f1efe4}
+.table-note{font-size:14px;color:#5c655f;margin-top:-10px}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -72,12 +81,52 @@
 <section class="hero"><div class="hero-content">
 <p class="eyebrow">RUTAS EN COCHE</p>
 <h1>Coste de gasolina por ruta en España</h1>
-<p class="hero-text">Elige una ruta para ver distancia, litros necesarios y coste estimado de combustible. Si tu ruta no está, usa la calculadora.</p>
+<p class="hero-text">Tabla comparativa con la distancia, el tiempo y el coste de combustible de las rutas más habituales. Si tu ruta no está, usa la calculadora.</p>
 <a href="index.html" class="btn">Calcular otra ruta →</a>
 </div></section>
-<section class="content"><h2>Rutas más buscadas</h2>
-<p>Los costes usan un coche de 6 L/100 km y gasolina a 1,70 €/litro como ejemplo. En cada página tienes la tabla para otros consumos.</p>
-<div class="related-grid"><a class="related-card" href="coste-gasolina-madrid-barcelona.html"><b>Madrid – Barcelona</b><span>Unos 620 km · 6 h 50 min · gasolina ≈ 63,24 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-valencia.html"><b>Madrid – Valencia</b><span>Unos 355 km · 4 h · gasolina ≈ 36,21 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-sevilla.html"><b>Madrid – Sevilla</b><span>Unos 530 km · 5 h 50 min · gasolina ≈ 54,06 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-malaga.html"><b>Madrid – Málaga</b><span>Unos 530 km · 5 h 50 min · gasolina ≈ 54,06 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-bilbao.html"><b>Madrid – Bilbao</b><span>Unos 400 km · 4 h 30 min · gasolina ≈ 40,80 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-granada.html"><b>Madrid – Granada</b><span>Unos 420 km · 4 h 40 min · gasolina ≈ 42,84 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-alicante.html"><b>Madrid – Alicante</b><span>Unos 420 km · 4 h 40 min · gasolina ≈ 42,84 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-zaragoza.html"><b>Madrid – Zaragoza</b><span>Unos 320 km · 3 h 30 min · gasolina ≈ 32,64 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-cadiz.html"><b>Madrid – Cádiz</b><span>Unos 650 km · 7 h 10 min · gasolina ≈ 66,30 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-madrid-cordoba.html"><b>Madrid – Córdoba</b><span>Unos 400 km · 4 h 30 min · gasolina ≈ 40,80 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-barcelona-valencia.html"><b>Barcelona – Valencia</b><span>Unos 350 km · 3 h 50 min · gasolina ≈ 35,70 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-barcelona-zaragoza.html"><b>Barcelona – Zaragoza</b><span>Unos 310 km · 3 h 30 min · gasolina ≈ 31,62 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-sevilla-malaga.html"><b>Sevilla – Málaga</b><span>Unos 210 km · 2 h 20 min · gasolina ≈ 21,42 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-sevilla-cadiz.html"><b>Sevilla – Cádiz</b><span>Unos 125 km · 1 h 20 min · gasolina ≈ 12,75 € (6 L/100 km)</span></a><a class="related-card" href="coste-gasolina-valencia-alicante.html"><b>Valencia – Alicante</b><span>Unos 170 km · 1 h 50 min · gasolina ≈ 17,34 € (6 L/100 km)</span></a></div>
+<section class="content">
+<h2>Comparativa de las 15 rutas</h2>
+<p>Todos los costes usan un coche de 6 L/100 km y gasolina a 1,70 €/litro como ejemplo. El tiempo es de conducción sin paradas, a una media de unos 90 km/h.</p>
+<div class="data-table-wrap"><table class="data-table">
+<thead><tr><th>Ruta</th><th class="n">Distancia</th><th class="n">Tiempo</th><th class="n">Litros (ida)</th><th class="n">Coste ida</th><th class="n">Ida y vuelta</th><th class="n">Por persona (4, ida)</th></tr></thead>
+<tbody>
+<tr><td><a href="coste-gasolina-madrid-barcelona.html">Madrid – Barcelona</a> <span style="font-size:12px;color:#1f6f4a;font-weight:700">· guía completa</span></td><td class="n">620 km</td><td class="n">6 h 50 min</td><td class="n">37,2 L</td><td class="n">63,24 €</td><td class="n">126,48 €</td><td class="n">15,81 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-valencia.html">Madrid – Valencia</a> <span style="font-size:12px;color:#1f6f4a;font-weight:700">· guía completa</span></td><td class="n">355 km</td><td class="n">4 h</td><td class="n">21,3 L</td><td class="n">36,21 €</td><td class="n">72,42 €</td><td class="n">9,05 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-sevilla.html">Madrid – Sevilla</a></td><td class="n">530 km</td><td class="n">5 h 50 min</td><td class="n">31,8 L</td><td class="n">54,06 €</td><td class="n">108,12 €</td><td class="n">13,52 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-malaga.html">Madrid – Málaga</a></td><td class="n">530 km</td><td class="n">5 h 50 min</td><td class="n">31,8 L</td><td class="n">54,06 €</td><td class="n">108,12 €</td><td class="n">13,52 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-bilbao.html">Madrid – Bilbao</a></td><td class="n">400 km</td><td class="n">4 h 30 min</td><td class="n">24,0 L</td><td class="n">40,80 €</td><td class="n">81,60 €</td><td class="n">10,20 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-granada.html">Madrid – Granada</a></td><td class="n">420 km</td><td class="n">4 h 40 min</td><td class="n">25,2 L</td><td class="n">42,84 €</td><td class="n">85,68 €</td><td class="n">10,71 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-alicante.html">Madrid – Alicante</a></td><td class="n">420 km</td><td class="n">4 h 40 min</td><td class="n">25,2 L</td><td class="n">42,84 €</td><td class="n">85,68 €</td><td class="n">10,71 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-zaragoza.html">Madrid – Zaragoza</a> <span style="font-size:12px;color:#1f6f4a;font-weight:700">· guía completa</span></td><td class="n">320 km</td><td class="n">3 h 30 min</td><td class="n">19,2 L</td><td class="n">32,64 €</td><td class="n">65,28 €</td><td class="n">8,16 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-cadiz.html">Madrid – Cádiz</a></td><td class="n">650 km</td><td class="n">7 h 10 min</td><td class="n">39,0 L</td><td class="n">66,30 €</td><td class="n">132,60 €</td><td class="n">16,58 €</td></tr>
+<tr><td><a href="coste-gasolina-madrid-cordoba.html">Madrid – Córdoba</a></td><td class="n">400 km</td><td class="n">4 h 30 min</td><td class="n">24,0 L</td><td class="n">40,80 €</td><td class="n">81,60 €</td><td class="n">10,20 €</td></tr>
+<tr><td><a href="coste-gasolina-barcelona-valencia.html">Barcelona – Valencia</a></td><td class="n">350 km</td><td class="n">3 h 50 min</td><td class="n">21,0 L</td><td class="n">35,70 €</td><td class="n">71,40 €</td><td class="n">8,93 €</td></tr>
+<tr><td><a href="coste-gasolina-barcelona-zaragoza.html">Barcelona – Zaragoza</a></td><td class="n">310 km</td><td class="n">3 h 30 min</td><td class="n">18,6 L</td><td class="n">31,62 €</td><td class="n">63,24 €</td><td class="n">7,91 €</td></tr>
+<tr><td><a href="coste-gasolina-sevilla-malaga.html">Sevilla – Málaga</a></td><td class="n">210 km</td><td class="n">2 h 20 min</td><td class="n">12,6 L</td><td class="n">21,42 €</td><td class="n">42,84 €</td><td class="n">5,36 €</td></tr>
+<tr><td><a href="coste-gasolina-sevilla-cadiz.html">Sevilla – Cádiz</a></td><td class="n">125 km</td><td class="n">1 h 20 min</td><td class="n">7,5 L</td><td class="n">12,75 €</td><td class="n">25,50 €</td><td class="n">3,19 €</td></tr>
+<tr><td><a href="coste-gasolina-valencia-alicante.html">Valencia – Alicante</a></td><td class="n">170 km</td><td class="n">1 h 50 min</td><td class="n">10,2 L</td><td class="n">17,34 €</td><td class="n">34,68 €</td><td class="n">4,34 €</td></tr>
+</tbody></table></div>
+<p class="table-note">Estimación de combustible; no incluye peajes. Cambia con el precio real del litro y el consumo de tu coche.</p>
+
+<h2>Cómo usar esta tabla</h2>
+<ul>
+<li>Para otro consumo, multiplica los litros de la tabla por la proporción: con 8 L/100 km, los litros y el coste son un tercio más altos que con 6 L/100 km.</li>
+<li>Para otro precio del combustible, multiplica los litros por el precio que pagues tú.</li>
+<li>Si viajáis varias personas, divide el coste entre los ocupantes. La columna «Por persona» ya lo hace para cuatro.</li>
+<li>Para rutas que no aparecen o con origen distinto, usa la <a href="calcular-coste-gasolina.html">calculadora de gasolina</a>.</li>
+</ul>
+
+<h2>Guías completas</h2>
+<p>Estas tres rutas incluyen consejos del recorrido, paradas habituales y coste por persona:</p>
+<div class="related-grid"><a class="related-card" href="coste-gasolina-madrid-barcelona.html"><b>Madrid – Barcelona</b><span>Unos 620 km · 6 h 50 min</span></a><a class="related-card" href="coste-gasolina-madrid-valencia.html"><b>Madrid – Valencia</b><span>Unos 355 km · 4 h</span></a><a class="related-card" href="coste-gasolina-madrid-zaragoza.html"><b>Madrid – Zaragoza</b><span>Unos 320 km · 3 h 30 min</span></a></div>
+
+<h2>Más herramientas</h2>
+<div class="related-links">
+<a href="calcular-coste-gasolina.html">⛽ Calculadora de gasolina de una ruta →</a>
+<a href="calcular-gasolina-por-km.html">🚗 Gasolina por kilómetro: tablas →</a>
+<a href="calcular-coste-por-kilometro.html">💶 Coste real por kilómetro del coche →</a>
+<a href="gasolineras-en-ruta.html">📍 Gasolineras en ruta →</a>
+</div>
 </section>
 </main>
 
