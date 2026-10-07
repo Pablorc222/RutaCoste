@@ -30,14 +30,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Calculadora de coste por kilómetro | RutaCoste</title>
+    <title>Coste real por kilómetro de un coche: calculadora | RutaCoste</title>
 
     <meta name="description"
-        content="Calcula cuánto cuesta cada kilómetro que recorres con tu coche según el consumo de combustible y el precio de la gasolina.">
+        content="Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.rutacoste.es/calcular-coste-por-kilometro.html">
-<meta property="og:title" content="Calculadora de coste por kilómetro | RutaCoste">
-<meta property="og:description" content="Calcula cuánto cuesta cada kilómetro que recorres con tu coche según el consumo de combustible y el precio de la gasolina.">
+<meta property="og:title" content="Coste real por kilómetro de un coche: calculadora | RutaCoste">
+<meta property="og:description" content="Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.rutacoste.es/calcular-coste-por-kilometro.html">
 <meta property="og:locale" content="es_ES">
@@ -45,8 +45,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Calculadora de coste por kilómetro | RutaCoste">
-<meta name="twitter:description" content="Calcula cuánto cuesta cada kilómetro que recorres con tu coche según el consumo de combustible y el precio de la gasolina.">
+<meta name="twitter:title" content="Coste real por kilómetro de un coche: calculadora | RutaCoste">
+<meta name="twitter:description" content="Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.">
 
 
 <!-- Fuentes -->
@@ -240,7 +240,19 @@
         @media (prefers-reduced-motion: reduce) {
             * { transition: none !important; }
         }
-    </style>
+    
+.data-table-wrap{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+.data-table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px;background:#fff}
+.data-table th,.data-table td{padding:11px 14px;border:1px solid #dbd8cb;text-align:left}
+.data-table th{background:#171c1a;color:#eef1ea;font-weight:600}
+.data-table td.n,.data-table th.n{text-align:right;white-space:nowrap}
+.data-table tr.tot td{font-weight:700;background:#f1efe4}
+.table-note{font-size:14px;color:#5c655f;margin-top:-10px}
+
+.opt-title{margin:28px 0 6px;font-size:18px}.opt-hint{margin:0 0 18px;font-size:14px;color:#5c655f}
+.result-real{margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.2);display:none}.result-real.show{display:block}
+.result-real p{line-height:1.6;margin:10px 0 0;font-size:14px}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -265,8 +277,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Calculadora de coste por kilómetro",
-  "description": "Calcula cuánto cuesta cada kilómetro que recorres con tu coche según el consumo de combustible y el precio de la gasolina.",
+  "headline": "Coste real por kilómetro de un coche",
+  "description": "Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.",
   "url": "https://www.rutacoste.es/calcular-coste-por-kilometro.html",
   "inLanguage": "es",
   "author": {
@@ -311,14 +323,11 @@
     <section class="hero hero-compact">
         <div class="hero-content">
 
-            <p class="eyebrow">CALCULADORA DE COCHE</p>
+            <p class="eyebrow">COSTE REAL DEL COCHE</p>
 
-            <h1>Calculadora de coste por kilómetro</h1>
+            <h1>Coste real por kilómetro de tu coche</h1>
 
-            <p class="hero-text">
-                Calcula cuánto cuesta recorrer cada kilómetro con tu coche según
-                el consumo de combustible, el precio de la gasolina y la distancia.
-            </p>
+            <p class="hero-text">Descubre cuánto te cuesta de verdad cada kilómetro: no solo la gasolina, sino también el seguro, el mantenimiento, los neumáticos, los impuestos y lo que pierde de valor tu coche.</p>
 
         </div>
     </section>
@@ -328,6 +337,7 @@
         <div class="calculator-box">
 
             <h2>Calcula el coste de tu coche</h2>
+            <p class="opt-hint">Rellena el combustible (obligatorio) y, para el coste real, los gastos anuales.</p>
 
             <div class="form-group">
                 <label for="consumo">Consumo del coche</label>
@@ -355,6 +365,23 @@
                     <span class="unit">km</span>
                 </div>
             </div>
+
+
+            <h3 class="opt-title">Gastos anuales (para el coste real)</h3>
+            <p class="opt-hint">Opcional. Con los kilómetros al año calculamos cuánto pesa cada gasto en cada kilómetro.</p>
+
+            <div class="form-group"><label for="kmAnio">Kilómetros que haces al año</label>
+                <div class="input-wrap"><input type="number" id="kmAnio" inputmode="numeric" placeholder="Ejemplo: 12000" step="100" min="0"><span class="unit">km/año</span></div></div>
+            <div class="form-group"><label for="seguro">Seguro</label>
+                <div class="input-wrap"><input type="number" id="seguro" inputmode="decimal" placeholder="Ejemplo: 450" step="1" min="0"><span class="unit">€/año</span></div></div>
+            <div class="form-group"><label for="mantenimiento">Mantenimiento y reparaciones</label>
+                <div class="input-wrap"><input type="number" id="mantenimiento" inputmode="decimal" placeholder="Ejemplo: 400" step="1" min="0"><span class="unit">€/año</span></div></div>
+            <div class="form-group"><label for="neumaticos">Neumáticos</label>
+                <div class="input-wrap"><input type="number" id="neumaticos" inputmode="decimal" placeholder="Ejemplo: 100" step="1" min="0"><span class="unit">€/año</span></div></div>
+            <div class="form-group"><label for="impuestos">Impuesto de circulación, ITV y otros</label>
+                <div class="input-wrap"><input type="number" id="impuestos" inputmode="decimal" placeholder="Ejemplo: 120" step="1" min="0"><span class="unit">€/año</span></div></div>
+            <div class="form-group"><label for="deprec">Depreciación (pérdida de valor)</label>
+                <div class="input-wrap"><input type="number" id="deprec" inputmode="decimal" placeholder="Ejemplo: 1400" step="10" min="0"><span class="unit">€/año</span></div></div>
 
             <p class="form-error" id="formError" role="alert">
                 Rellena los tres campos con valores mayores que cero.
@@ -389,6 +416,15 @@
 
                 <p class="result-note" id="litrosNote"></p>
 
+                <div class="result-real" id="realBox">
+                    <div class="result-grid">
+                        <div class="result-card main"><span>Coste real por kilómetro</span><strong id="realKm">0 €</strong></div>
+                        <div class="result-card"><span>Coste real del trayecto</span><strong id="realTrayecto">0 €</strong></div>
+                        <div class="result-card"><span>Coste total al año</span><strong id="realAnio">0 €</strong></div>
+                    </div>
+                    <p id="realNote"></p>
+                </div>
+
             </div>
 
         </div>
@@ -398,75 +434,87 @@
 
     <section class="info-section">
 
-        <h2>¿Cómo calcular el coste por kilómetro de un coche?</h2>
-
+        <h2>Qué es el coste real por kilómetro</h2>
         <p>
-            Para calcular cuánto cuesta recorrer un kilómetro con tu coche,
-            primero necesitas conocer el consumo medio del vehículo y el precio
-            del combustible.
+            La gasolina es el gasto que más se nota, pero es solo una parte. Tener un coche
+            cuesta dinero aunque esté aparcado: seguro, impuestos, ITV y la pérdida de valor
+            del vehículo se pagan se use o no. Dividir todos esos gastos entre los kilómetros
+            que haces al año da el <strong>coste real por kilómetro</strong>, que es la cifra útil
+            para comparar el coche con el tren, el autobús o un coche compartido.
         </p>
 
         <div class="formula-box">
-            Coste por km = (consumo cada 100 km ÷ 100) × precio del combustible
+            Coste real por km = (gastos fijos anuales ÷ km al año) + (consumo ÷ 100 × precio del litro) + (mantenimiento y neumáticos ÷ km al año)
         </div>
 
+        <h2>Qué gastos hay que sumar</h2>
+        <div class="data-table-wrap"><table class="data-table">
+            <thead><tr><th>Gasto</th><th>Tipo</th><th>Cómo estimarlo</th></tr></thead>
+            <tbody>
+                <tr><td>Combustible</td><td>Variable</td><td>Consumo ÷ 100 × precio del litro</td></tr>
+                <tr><td>Mantenimiento y reparaciones</td><td>Variable</td><td>Revisiones, aceite, frenos y averías de un año típico</td></tr>
+                <tr><td>Neumáticos</td><td>Variable</td><td>Precio del juego ÷ km que duran, por los km del año</td></tr>
+                <tr><td>Seguro</td><td>Fijo</td><td>Lo que pagas al año según tu póliza</td></tr>
+                <tr><td>Impuesto de circulación e ITV</td><td>Fijo</td><td>Recibo municipal más el coste de la ITV, repartido por año</td></tr>
+                <tr><td>Depreciación</td><td>Fijo</td><td>(precio de compra − valor estimado de venta) ÷ años de uso</td></tr>
+            </tbody>
+        </table></div>
+        <p class="table-note">Si usas garaje, aparcamiento de pago, peajes o financiación, súmalos a «impuestos y otros».</p>
+
+        <h2>Ejemplo resuelto: compacto de gasolina, 12.000 km al año</h2>
         <p>
-            Por ejemplo, si un coche consume 6 litros cada 100 kilómetros y la
-            gasolina cuesta 1,70 € por litro:
+            Un compacto que consume 6,5 L/100 km, con gasolina a 1,65 € el litro (cifras de ejemplo,
+            no precios actuales):
+        </p>
+        <div class="data-table-wrap"><table class="data-table">
+            <thead><tr><th>Concepto</th><th class="n">€ al año</th><th class="n">€ por km</th></tr></thead>
+            <tbody>
+                <tr><td>Combustible (6,5 L/100 × 1,65 €)</td><td class="n">1.287</td><td class="n">0,107</td></tr>
+                <tr><td>Seguro</td><td class="n">450</td><td class="n">0,038</td></tr>
+                <tr><td>Mantenimiento</td><td class="n">400</td><td class="n">0,033</td></tr>
+                <tr><td>Neumáticos</td><td class="n">100</td><td class="n">0,008</td></tr>
+                <tr><td>Impuesto e ITV</td><td class="n">120</td><td class="n">0,010</td></tr>
+                <tr><td>Depreciación (18.000 € a 4.000 € en 10 años)</td><td class="n">1.400</td><td class="n">0,117</td></tr>
+                <tr class="tot"><td>Total</td><td class="n">3.757</td><td class="n">0,313</td></tr>
+            </tbody>
+        </table></div>
+        <p>
+            El coste real es de unos <strong>0,31 € por kilómetro</strong>, casi el triple de lo que sale
+            solo con la gasolina. En un viaje de 300 km, la gasolina son unos 32 €, pero el coste real
+            del coche ronda los 94 €.
         </p>
 
-        <div class="formula-box">
-            (6 ÷ 100) × 1,70 € = 0,102 € por kilómetro
-        </div>
-
+        <h2>Por qué importa cuántos kilómetros haces al año</h2>
         <p>
-            Esto significa que recorrer cada kilómetro cuesta aproximadamente
-            10 céntimos solamente en combustible.
+            Gran parte de los gastos no cambia si conduces poco o mucho, así que cuantos menos kilómetros
+            hagas, más caro sale cada uno. Con los mismos gastos del ejemplo:
         </p>
+        <div class="data-table-wrap"><table class="data-table">
+            <thead><tr><th>Km al año</th><th class="n">Resto de gastos por km</th><th class="n">Coste real por km</th></tr></thead>
+            <tbody>
+                <tr><td>6.000</td><td class="n">0,412</td><td class="n">0,52</td></tr>
+                <tr><td>12.000</td><td class="n">0,206</td><td class="n">0,31</td></tr>
+                <tr><td>20.000</td><td class="n">0,124</td><td class="n">0,23</td></tr>
+            </tbody>
+        </table></div>
+        <p class="table-note">Resto de gastos del ejemplo: 2.470 € al año (seguro, mantenimiento, neumáticos, impuestos y depreciación), que se mantienen constantes por simplicidad. A ellos se suman 0,107 € por km de combustible.</p>
 
-
-        <h2>¿Qué gastos incluye esta calculadora?</h2>
-
-        <p>
-            Esta calculadora calcula el coste aproximado del combustible.
-            El coste real de utilizar un coche también puede incluir otros
-            gastos como mantenimiento, seguro, impuestos o depreciación.
-        </p>
-
-
-        <h2>Factores que pueden cambiar el coste</h2>
-
+        <h2>Cómo reducir el coste por kilómetro</h2>
         <ul>
-            <li>🚗 El consumo real del vehículo.</li>
-            <li>⛽ El precio del combustible.</li>
-            <li>🛣️ El tipo de carretera.</li>
-            <li>🚦 El tráfico.</li>
-            <li>❄️ El uso del aire acondicionado.</li>
-            <li>🏔️ Las pendientes del recorrido.</li>
+            <li>Comparar el seguro cada año: suele ser el gasto fijo más fácil de recortar.</li>
+            <li>Mantener la presión de los neumáticos: reduce el consumo y alarga su vida.</li>
+            <li>Conducir de forma suave y a velocidad constante en carretera.</li>
+            <li>Compartir coche en los viajes largos: divide el coste real entre los ocupantes.</li>
         </ul>
 
-
-        <h2>Otras calculadoras de RutaCoste</h2>
-
-        <div class="related-pages">
-
-            <a href="calcular-gasolina-por-km.html">
-                ⛽ Calcular gasolina por kilómetros →
-            </a>
-
-            <a href="calcular-coste-gasolina.html">
-                🚗 Calcular coste de gasolina →
-            </a>
-
-            <a href="calcular-coste-viaje.html">
-                🛣️ Calcular coste de un viaje →
-            </a>
-
-            <a href="index.html">
-                🗺️ Calculadora completa de RutaCoste →
-            </a>
-
-        </div>
+        <h2>¿Solo quieres saber lo que gastas en gasolina?</h2>
+        <p>
+            Si te interesa únicamente el combustible, con tablas de euros por kilómetro y por trayecto,
+            tienes la guía de <a href="calcular-gasolina-por-km.html">gasolina por kilómetros</a>. Y si lo
+            que quieres es el coste de una ruta concreta con origen y destino, usa la
+            <a href="calcular-coste-gasolina.html">calculadora de gasolina</a> o la
+            <a href="calcular-coste-viaje.html">calculadora de coste de viaje</a>.
+        </p>
 
     </section>
 
@@ -523,35 +571,55 @@
     var fmt = function (n, d) {
         return n.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }) + ' €';
     };
-    var ids = ['consumo', 'precio', 'kilometros'];
+    var num = function (id) {
+        var v = parseFloat(String(document.getElementById(id).value).replace(',', '.'));
+        return v > 0 ? v : 0;
+    };
+    var req = ['consumo', 'precio', 'kilometros'];
+    var extras = ['seguro', 'mantenimiento', 'neumaticos', 'impuestos', 'deprec'];
     var err = document.getElementById('formError');
 
     function calcular() {
-        var v = ids.map(function (id) {
-            return parseFloat(String(document.getElementById(id).value).replace(',', '.'));
-        });
         var ok = true;
-        ids.forEach(function (id, i) {
-            var bad = !(v[i] > 0);
+        req.forEach(function (id) {
+            var bad = !(num(id) > 0);
             document.getElementById(id).classList.toggle('invalid', bad);
             if (bad) ok = false;
         });
         err.classList.toggle('show', !ok);
         if (!ok) return;
 
-        var consumo = v[0], precio = v[1], km = v[2];
+        var consumo = num('consumo'), precio = num('precio'), km = num('kilometros');
         var costeKm = (consumo / 100) * precio;
         document.getElementById('costeKm').textContent = fmt(costeKm, 3);
         document.getElementById('coste100').textContent = fmt(costeKm * 100, 2);
         document.getElementById('costeTotal').textContent = fmt(costeKm * km, 2);
         document.getElementById('litrosNote').textContent =
-            'Para ' + km.toLocaleString('es-ES') + ' km necesitas unos ' +
-            (consumo * km / 100).toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' litros de combustible.';
+            'Solo combustible. Para ' + km.toLocaleString('es-ES') + ' km necesitas unos ' +
+            (consumo * km / 100).toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' litros.';
+
+        var kmAnio = num('kmAnio');
+        var anuales = extras.reduce(function (s, id) { return s + num(id); }, 0);
+        var real = document.getElementById('realBox');
+        if (kmAnio > 0 && anuales > 0) {
+            var combAnio = costeKm * kmAnio;
+            var totalAnio = combAnio + anuales;
+            var realKm = totalAnio / kmAnio;
+            document.getElementById('realKm').textContent = fmt(realKm, 3);
+            document.getElementById('realTrayecto').textContent = fmt(realKm * km, 2);
+            document.getElementById('realAnio').textContent = fmt(totalAnio, 0);
+            document.getElementById('realNote').textContent =
+                'El combustible es el ' + Math.round(combAnio / totalAnio * 100) +
+                ' % del coste total; el resto son gastos del coche que pagas aunque lo uses poco.';
+            real.classList.add('show');
+        } else {
+            real.classList.remove('show');
+        }
         document.getElementById('results').classList.add('show');
     }
 
     document.getElementById('calcBtn').addEventListener('click', calcular);
-    ids.forEach(function (id) {
+    req.concat(['kmAnio'], extras).forEach(function (id) {
         document.getElementById(id).addEventListener('keydown', function (e) {
             if (e.key === 'Enter') calcular();
         });
