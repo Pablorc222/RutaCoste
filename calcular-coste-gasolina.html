@@ -27,232 +27,71 @@
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Coste real por kilómetro de un coche: calculadora | RutaCoste</title>
+  <title>Calculadora de gasolina: calcula el coste de tu viaje | RutaCoste</title>
 
-    <meta name="description"
-        content="Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.rutacoste.es/calcular-coste-por-kilometro.html">
-<meta property="og:title" content="Coste real por kilómetro de un coche: calculadora | RutaCoste">
-<meta property="og:description" content="Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.rutacoste.es/calcular-coste-por-kilometro.html">
-<meta property="og:locale" content="es_ES">
+  <meta
+    name="description"
+    content="Calcula cuánto te costará la gasolina de tu viaje en coche. Introduce origen, destino, consumo y precio del combustible y obtén el coste estimado de tu ruta."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://www.rutacoste.es/calcular-coste-gasolina.html"
+  >
+
+  <meta
+    property="og:title"
+    content="Calculadora de gasolina: calcula el coste de tu viaje | RutaCoste"
+  >
+
+  <meta
+    property="og:description"
+    content="Calcula fácilmente el coste de gasolina de cualquier viaje por carretera."
+  >
+
+  <meta property="og:type" content="website">
+
+  <meta
+    property="og:url"
+    content="https://www.rutacoste.es/calcular-coste-gasolina.html"
+  >
+
+  <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://www.rutacoste.es/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Coste real por kilómetro de un coche: calculadora | RutaCoste">
-<meta name="twitter:description" content="Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.">
 
+  <meta name="twitter:card" content="summary">
 
-<!-- Fuentes -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta
+    name="twitter:title"
+    content="Calculadora de gasolina: calcula el coste de tu viaje"
+  >
 
-    
+  <meta
+    name="twitter:description"
+    content="Calcula cuánto gastarás en gasolina en tu próximo viaje."
+  >
 
-    <style>
-        /* Hero compacto: misma banda oscura que el resto de calculadoras */
-        .hero.hero-compact { min-height: 0; padding: 0; }
-        .hero-compact .hero-content { max-width: 850px; padding: 64px 24px 64px; }
-        .hero-compact h1 { max-width: 820px; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        .calculator-page {
-            position: relative;
-            max-width: 850px;
-            margin: 40px auto 0;
-            padding: 0 24px 24px;
-        }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
 
-        .calculator-box {
-            background: #ffffff;
-            border: 1px solid #dbd8cb;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 24px 60px rgba(18, 22, 27, 0.28);
-        }
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+  >
 
-        .calculator-box h2 { margin: 0 0 22px; font-size: 22px; }
-
-        .form-group { margin-bottom: 20px; }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: #171c1a;
-        }
-
-        .input-wrap { position: relative; }
-
-        .form-group input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 15px 64px 15px 15px;
-            border: 1px solid #cfcbbd;
-            border-radius: 10px;
-            font: inherit;
-            font-size: 17px;
-            background: #fff;
-            transition: border-color .15s ease, box-shadow .15s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #1f6f4a;
-            box-shadow: 0 0 0 3px rgba(31, 111, 74, 0.18);
-        }
-
-        .form-group input.invalid { border-color: #b3402f; }
-
-        .unit {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            color: #5c655f;
-            pointer-events: none;
-        }
-
-        .form-error {
-            display: none;
-            margin: -6px 0 16px;
-            font-size: 14px;
-            color: #b3402f;
-        }
-
-        .form-error.show { display: block; }
-
-        .calculate-button {
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            padding: 17px;
-            border-radius: 10px;
-            font: inherit;
-            font-size: 17px;
-            font-weight: 700;
-            background: #1f6f4a;
-            color: white;
-            transition: background .15s ease, transform .15s ease;
-        }
-
-        .calculate-button:hover { background: #164f36; }
-        .calculate-button:active { transform: translateY(1px); }
-        .calculate-button:focus-visible { outline: 3px solid #e2a33d; outline-offset: 3px; }
-
-        .results {
-            display: none;
-            margin-top: 28px;
-            padding-top: 24px;
-            border-top: 1px solid #dbd8cb;
-        }
-
-        .results.show { display: block; }
-
-        .results h2 { margin-bottom: 4px; }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
-            gap: 14px;
-            margin-top: 16px;
-        }
-
-        .result-card {
-            background: #eef1ea;
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .result-card.main { background: #1f6f4a; color: #fff; }
-
-        .result-card span {
-            display: block;
-            font-size: 14px;
-            color: #5c655f;
-            margin-bottom: 8px;
-        }
-
-        .result-card.main span { color: #cfe6d9; }
-
-        .result-card strong {
-            font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-            font-size: 26px;
-            color: #171c1a;
-        }
-
-        .result-card.main strong { color: #fff; font-size: 32px; }
-
-        .result-note { margin: 16px 0 0; font-size: 14px; color: #5c655f; }
-
-        .info-section {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 24px 24px 70px;
-        }
-
-        .info-section h2 { margin-top: 55px; }
-
-        .info-section p,
-        .info-section li { line-height: 1.8; }
-
-        .formula-box {
-            background: #171c1a;
-            color: #eef1ea;
-            padding: 22px;
-            border-radius: 10px;
-            margin: 25px 0;
-            font-size: 17px;
-            overflow-x: auto;
-        }
-
-        .related-pages { display: grid; gap: 14px; margin-top: 25px; }
-
-        .related-pages a {
-            padding: 18px 20px;
-            background: #ffffff;
-            border: 1px solid #dbd8cb;
-            border-radius: 10px;
-            color: #171c1a;
-            text-decoration: none;
-            font-weight: 700;
-            transition: border-color .15s ease;
-        }
-
-        .related-pages a:hover { border-color: #1f6f4a; }
-
-        @media (max-width: 700px) {
-            .hero-compact .hero-content { padding: 44px 16px 44px; }
-            .calculator-page { padding: 0 16px 16px; margin-top: 28px; }
-            .calculator-box { padding: 22px; }
-            .result-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * { transition: none !important; }
-        }
-    
-.data-table-wrap{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
-.data-table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px;background:#fff}
-.data-table th,.data-table td{padding:11px 14px;border:1px solid #dbd8cb;text-align:left}
-.data-table th{background:#171c1a;color:#eef1ea;font-weight:600}
-.data-table td.n,.data-table th.n{text-align:right;white-space:nowrap}
-.data-table tr.tot td{font-weight:700;background:#f1efe4}
-.table-note{font-size:14px;color:#5c655f;margin-top:-10px}
-
-.opt-title{margin:28px 0 6px;font-size:18px}.opt-hint{margin:0 0 18px;font-size:14px;color:#5c655f}
-.result-real{margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.2);display:none}.result-real.show{display:block}
-.result-real p{line-height:1.6;margin:10px 0 0;font-size:14px}
-</style>
+  <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -267,8 +106,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Coste por kilómetro",
-      "item": "https://www.rutacoste.es/calcular-coste-por-kilometro.html"
+      "name": "Coste de gasolina",
+      "item": "https://www.rutacoste.es/calcular-coste-gasolina.html"
     }
   ]
 }
@@ -276,25 +115,79 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Coste real por kilómetro de un coche",
-  "description": "Calcula cuánto te cuesta realmente cada kilómetro del coche: combustible, seguro, mantenimiento, neumáticos, impuestos y depreciación, según los km que haces al año.",
-  "url": "https://www.rutacoste.es/calcular-coste-por-kilometro.html",
-  "inLanguage": "es",
-  "author": {
-    "@type": "Organization",
-    "name": "RutaCoste"
+  "@type": "WebApplication",
+  "name": "Calculadora de gasolina: calcula el coste de tu viaje",
+  "url": "https://www.rutacoste.es/calcular-coste-gasolina.html",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Web",
+  "description": "Calcula cuánto te costará la gasolina de tu viaje en coche. Introduce origen, destino, consumo y precio del combustible y obtén el coste estimado de tu ruta.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "RutaCoste"
-  },
-  "mainEntityOfPage": "https://www.rutacoste.es/calcular-coste-por-kilometro.html"
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿La calculadora sirve para viajes de ida y vuelta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Marca la opción de ida y vuelta y la calculadora tendrá en cuenta los kilómetros del trayecto completo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué consumo debo introducir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Introduce el consumo medio de tu vehículo en litros cada 100 km. Si no lo conoces, puedes utilizar uno de los valores orientativos disponibles en esta página."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿La calculadora incluye los peajes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. RutaCoste calcula únicamente el coste del combustible. Los peajes deben añadirse aparte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo utilizarla para viajes fuera de España?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Puedes introducir ciudades y direcciones de diferentes países y calcular el coste estimado de combustible de la ruta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El resultado es exacto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El resultado es una estimación. El consumo real puede cambiar según la velocidad, tráfico, carga, climatología y estilo de conducción."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿RutaCoste guarda mis búsquedas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Los cálculos se realizan en el navegador y no guardamos un historial de las rutas que consultas. Puedes consultar nuestra  Política de Privacidad ."
+      }
+    }
+  ]
 }
 </script>
 </head>
 
-<body>
+<body class="has-hero">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS7G295H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -303,14 +196,14 @@
 <header>
   <a href="index.html" class="logo">Ruta<span>Coste</span></a>
   <nav>
-    <a href="index.html#calculadora">Calculadora</a>
-    <a href="calcular-coste-gasolina.html">Gasolina</a>
+    <a href="#calculadora">Calculadora</a>
+    <a href="calcular-coste-gasolina.html" aria-current="page">Gasolina</a>
     <a href="calcular-coste-viaje.html">Coste de viaje</a>
-    <a href="calcular-coste-por-kilometro.html" aria-current="page">Coste por km</a>
-    <a href="index.html#como-funciona">Cómo funciona</a>
-    <a href="index.html#consumos">Consumos</a>
+    <a href="calcular-coste-por-kilometro.html">Coste por km</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#consumos">Consumos</a>
     <a href="index.html#internacional">Fuera de España</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="#faq">FAQ</a>
       <a href="gasolineras-en-ruta.html">Gasolineras en ruta</a>
     <a href="rutas.html">Rutas</a>
     <a href="contacto.html">Contacto</a>
@@ -318,207 +211,656 @@
 </header>
 
 
-<main>
+<section class="hero">
 
-    <section class="hero hero-compact">
-        <div class="hero-content">
+  <div class="hero-road" aria-hidden="true"></div>
 
-            <p class="eyebrow">COSTE REAL DEL COCHE</p>
+  <div class="wrap">
 
-            <h1>Coste real por kilómetro de tu coche</h1>
+    <div class="hero-top">
 
-            <p class="hero-text">Descubre cuánto te cuesta de verdad cada kilómetro: no solo la gasolina, sino también el seguro, el mantenimiento, los neumáticos, los impuestos y lo que pierde de valor tu coche.</p>
+      <div class="eyebrow">
+        Calculadora de gasolina
+      </div>
+
+      <h1>
+        Calcula cuánto te costará la gasolina de tu viaje
+      </h1>
+
+      <p class="lead">
+        Utiliza nuestra calculadora de gasolina para saber cuánto gastarás
+        en combustible antes de realizar un viaje. Introduce el origen,
+        el destino, el consumo de tu coche y el precio por litro y obtén
+        una estimación del coste de tu ruta.
+      </p>
+
+    </div>
+
+
+    <div class="calc-card" id="calculadora">
+
+      <div class="calc-card-head">
+
+        <h2>
+          Calculadora de gasolina
+        </h2>
+
+        <span>
+          Gratis · sin registro
+        </span>
+
+      </div>
+
+
+      <div
+        class="vehicle-chips"
+        role="group"
+        aria-label="Selecciona un tipo de vehículo orientativo"
+      >
+
+        <button type="button" class="vchip" data-consumo="6.0">
+          Utilitario pequeño
+        </button>
+
+        <button type="button" class="vchip active" data-consumo="6.5">
+          Compacto
+        </button>
+
+        <button type="button" class="vchip" data-consumo="8.5">
+          SUV / familiar
+        </button>
+
+        <button type="button" class="vchip" data-consumo="9.5">
+          Monovolumen
+        </button>
+
+      </div>
+
+
+      <form id="calc-form" autocomplete="off">
+
+        <div class="calc-grid">
+
+          <div class="field autocomplete">
+
+            <label for="origen">
+              Origen
+            </label>
+
+            <div class="ac-input-wrap">
+
+              <input
+                type="text"
+                id="origen"
+                placeholder="Ciudad, pueblo o dirección"
+                required
+              >
+
+              <span class="ac-badge"></span>
+
+              <div
+                class="ac-list"
+                id="origen-list"
+                role="listbox"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="field autocomplete">
+
+            <label for="destino">
+              Destino
+            </label>
+
+            <div class="ac-input-wrap">
+
+              <input
+                type="text"
+                id="destino"
+                placeholder="Ciudad, pueblo o dirección"
+                required
+              >
+
+              <span class="ac-badge"></span>
+
+              <div
+                class="ac-list"
+                id="destino-list"
+                role="listbox"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="consumo">
+              Consumo medio (L/100 km)
+            </label>
+
+            <input
+              type="number"
+              id="consumo"
+              step="0.1"
+              min="1"
+              value="6.5"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="precio">
+              Precio del combustible (por litro)
+            </label>
+
+            <div class="currency-input-wrap">
+
+              <input
+                type="number"
+                id="precio"
+                step="0.001"
+                min="0.1"
+                value="1.65"
+                required
+              >
+
+              <span
+                class="currency-badge"
+                id="currency-badge"
+              >
+                EUR
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="checkbox-row">
+
+            <input
+              type="checkbox"
+              id="ida-vuelta"
+            >
+
+            <label for="ida-vuelta">
+              Es un trayecto de ida y vuelta
+            </label>
+
+          </div>
 
         </div>
-    </section>
-
-    <section class="calculator-page" id="calculadora">
-
-        <div class="calculator-box">
-
-            <h2>Calcula el coste de tu coche</h2>
-            <p class="opt-hint">Rellena el combustible (obligatorio) y, para el coste real, los gastos anuales.</p>
-
-            <div class="form-group">
-                <label for="consumo">Consumo del coche</label>
-                <div class="input-wrap">
-                    <input type="number" id="consumo" inputmode="decimal"
-                           placeholder="Ejemplo: 6,5" step="0.1" min="0">
-                    <span class="unit">L/100 km</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="precio">Precio del combustible</label>
-                <div class="input-wrap">
-                    <input type="number" id="precio" inputmode="decimal"
-                           placeholder="Ejemplo: 1,70" step="0.01" min="0">
-                    <span class="unit">€/litro</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="kilometros">Kilómetros del trayecto</label>
-                <div class="input-wrap">
-                    <input type="number" id="kilometros" inputmode="numeric"
-                           placeholder="Ejemplo: 300" step="1" min="0">
-                    <span class="unit">km</span>
-                </div>
-            </div>
 
 
-            <h3 class="opt-title">Gastos anuales (para el coste real)</h3>
-            <p class="opt-hint">Opcional. Con los kilómetros al año calculamos cuánto pesa cada gasto en cada kilómetro.</p>
+        <button
+          type="submit"
+          class="btn-primary"
+          id="calc-btn"
+        >
+          Calcular coste de la ruta
+        </button>
 
-            <div class="form-group"><label for="kmAnio">Kilómetros que haces al año</label>
-                <div class="input-wrap"><input type="number" id="kmAnio" inputmode="numeric" placeholder="Ejemplo: 12000" step="100" min="0"><span class="unit">km/año</span></div></div>
-            <div class="form-group"><label for="seguro">Seguro</label>
-                <div class="input-wrap"><input type="number" id="seguro" inputmode="decimal" placeholder="Ejemplo: 450" step="1" min="0"><span class="unit">€/año</span></div></div>
-            <div class="form-group"><label for="mantenimiento">Mantenimiento y reparaciones</label>
-                <div class="input-wrap"><input type="number" id="mantenimiento" inputmode="decimal" placeholder="Ejemplo: 400" step="1" min="0"><span class="unit">€/año</span></div></div>
-            <div class="form-group"><label for="neumaticos">Neumáticos</label>
-                <div class="input-wrap"><input type="number" id="neumaticos" inputmode="decimal" placeholder="Ejemplo: 100" step="1" min="0"><span class="unit">€/año</span></div></div>
-            <div class="form-group"><label for="impuestos">Impuesto de circulación, ITV y otros</label>
-                <div class="input-wrap"><input type="number" id="impuestos" inputmode="decimal" placeholder="Ejemplo: 120" step="1" min="0"><span class="unit">€/año</span></div></div>
-            <div class="form-group"><label for="deprec">Depreciación (pérdida de valor)</label>
-                <div class="input-wrap"><input type="number" id="deprec" inputmode="decimal" placeholder="Ejemplo: 1400" step="10" min="0"><span class="unit">€/año</span></div></div>
+      </form>
 
-            <p class="form-error" id="formError" role="alert">
-                Rellena los tres campos con valores mayores que cero.
-            </p>
 
-            <button type="button" class="calculate-button" id="calcBtn">
-                Calcular coste
-            </button>
+      <div
+        class="error-msg"
+        id="error-box"
+      ></div>
 
-            <div class="results" id="results" aria-live="polite">
 
-                <h2>Resultado</h2>
+      <div
+        class="result"
+        id="result-box"
+      >
 
-                <div class="result-grid">
+        <div class="result-total">
 
-                    <div class="result-card main">
-                        <span>Coste por kilómetro</span>
-                        <strong id="costeKm">0 €</strong>
-                    </div>
+          <span
+            class="price mono"
+            id="res-coste"
+          >
+            0,00
+          </span>
 
-                    <div class="result-card">
-                        <span>Coste cada 100 km</span>
-                        <strong id="coste100">0 €</strong>
-                    </div>
-
-                    <div class="result-card">
-                        <span>Coste del trayecto</span>
-                        <strong id="costeTotal">0 €</strong>
-                    </div>
-
-                </div>
-
-                <p class="result-note" id="litrosNote"></p>
-
-                <div class="result-real" id="realBox">
-                    <div class="result-grid">
-                        <div class="result-card main"><span>Coste real por kilómetro</span><strong id="realKm">0 €</strong></div>
-                        <div class="result-card"><span>Coste real del trayecto</span><strong id="realTrayecto">0 €</strong></div>
-                        <div class="result-card"><span>Coste total al año</span><strong id="realAnio">0 €</strong></div>
-                    </div>
-                    <p id="realNote"></p>
-                </div>
-
-            </div>
+          <span class="cur">
+            estimado
+          </span>
 
         </div>
 
-    </section>
+
+        <div
+          class="result-sub"
+          id="res-sub"
+        ></div>
 
 
-    <section class="info-section">
+        <div class="result-breakdown">
 
-        <h2>Qué es el coste real por kilómetro</h2>
-        <p>
-            La gasolina es el gasto que más se nota, pero es solo una parte. Tener un coche
-            cuesta dinero aunque esté aparcado: seguro, impuestos, ITV y la pérdida de valor
-            del vehículo se pagan se use o no. Dividir todos esos gastos entre los kilómetros
-            que haces al año da el <strong>coste real por kilómetro</strong>, que es la cifra útil
-            para comparar el coche con el tren, el autobús o un coche compartido.
-        </p>
+          <div class="rb-item">
 
-        <div class="formula-box">
-            Coste real por km = (gastos fijos anuales ÷ km al año) + (consumo ÷ 100 × precio del litro) + (mantenimiento y neumáticos ÷ km al año)
+            <b id="res-km">–</b>
+
+            <span>
+              Distancia
+            </span>
+
+          </div>
+
+
+          <div class="rb-item">
+
+            <b id="res-litros">–</b>
+
+            <span>
+              Combustible necesario
+            </span>
+
+          </div>
+
+
+          <div class="rb-item">
+
+            <b id="res-tiempo">–</b>
+
+            <span>
+              Tiempo de conducción
+            </span>
+
+          </div>
+
         </div>
 
-        <h2>Qué gastos hay que sumar</h2>
-        <div class="data-table-wrap"><table class="data-table">
-            <thead><tr><th>Gasto</th><th>Tipo</th><th>Cómo estimarlo</th></tr></thead>
-            <tbody>
-                <tr><td>Combustible</td><td>Variable</td><td>Consumo ÷ 100 × precio del litro</td></tr>
-                <tr><td>Mantenimiento y reparaciones</td><td>Variable</td><td>Revisiones, aceite, frenos y averías de un año típico</td></tr>
-                <tr><td>Neumáticos</td><td>Variable</td><td>Precio del juego ÷ km que duran, por los km del año</td></tr>
-                <tr><td>Seguro</td><td>Fijo</td><td>Lo que pagas al año según tu póliza</td></tr>
-                <tr><td>Impuesto de circulación e ITV</td><td>Fijo</td><td>Recibo municipal más el coste de la ITV, repartido por año</td></tr>
-                <tr><td>Depreciación</td><td>Fijo</td><td>(precio de compra − valor estimado de venta) ÷ años de uso</td></tr>
-            </tbody>
-        </table></div>
-        <p class="table-note">Si usas garaje, aparcamiento de pago, peajes o financiación, súmalos a «impuestos y otros».</p>
 
-        <h2>Ejemplo resuelto: compacto de gasolina, 12.000 km al año</h2>
-        <p>
-            Un compacto que consume 6,5 L/100 km, con gasolina a 1,65 € el litro (cifras de ejemplo,
-            no precios actuales):
-        </p>
-        <div class="data-table-wrap"><table class="data-table">
-            <thead><tr><th>Concepto</th><th class="n">€ al año</th><th class="n">€ por km</th></tr></thead>
-            <tbody>
-                <tr><td>Combustible (6,5 L/100 × 1,65 €)</td><td class="n">1.287</td><td class="n">0,107</td></tr>
-                <tr><td>Seguro</td><td class="n">450</td><td class="n">0,038</td></tr>
-                <tr><td>Mantenimiento</td><td class="n">400</td><td class="n">0,033</td></tr>
-                <tr><td>Neumáticos</td><td class="n">100</td><td class="n">0,008</td></tr>
-                <tr><td>Impuesto e ITV</td><td class="n">120</td><td class="n">0,010</td></tr>
-                <tr><td>Depreciación (18.000 € a 4.000 € en 10 años)</td><td class="n">1.400</td><td class="n">0,117</td></tr>
-                <tr class="tot"><td>Total</td><td class="n">3.757</td><td class="n">0,313</td></tr>
-            </tbody>
-        </table></div>
-        <p>
-            El coste real es de unos <strong>0,31 € por kilómetro</strong>, casi el triple de lo que sale
-            solo con la gasolina. En un viaje de 300 km, la gasolina son unos 32 €, pero el coste real
-            del coche ronda los 94 €.
-        </p>
+        <div
+          class="route-map"
+          id="route-map"
+        ></div>
 
-        <h2>Por qué importa cuántos kilómetros haces al año</h2>
-        <p>
-            Gran parte de los gastos no cambia si conduces poco o mucho, así que cuantos menos kilómetros
-            hagas, más caro sale cada uno. Con los mismos gastos del ejemplo:
-        </p>
-        <div class="data-table-wrap"><table class="data-table">
-            <thead><tr><th>Km al año</th><th class="n">Resto de gastos por km</th><th class="n">Coste real por km</th></tr></thead>
-            <tbody>
-                <tr><td>6.000</td><td class="n">0,412</td><td class="n">0,52</td></tr>
-                <tr><td>12.000</td><td class="n">0,206</td><td class="n">0,31</td></tr>
-                <tr><td>20.000</td><td class="n">0,124</td><td class="n">0,23</td></tr>
-            </tbody>
-        </table></div>
-        <p class="table-note">Resto de gastos del ejemplo: 2.470 € al año (seguro, mantenimiento, neumáticos, impuestos y depreciación), que se mantienen constantes por simplicidad. A ellos se suman 0,107 € por km de combustible.</p>
+      </div>
 
-        <h2>Cómo reducir el coste por kilómetro</h2>
-        <ul>
-            <li>Comparar el seguro cada año: suele ser el gasto fijo más fácil de recortar.</li>
-            <li>Mantener la presión de los neumáticos: reduce el consumo y alarga su vida.</li>
-            <li>Conducir de forma suave y a velocidad constante en carretera.</li>
-            <li>Compartir coche en los viajes largos: divide el coste real entre los ocupantes.</li>
-        </ul>
+    </div>
 
-        <h2>¿Solo quieres saber lo que gastas en gasolina?</h2>
+  </div>
+
+</section>
+
+
+<section id="como-funciona">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Cómo calcular el coste
+      </div>
+
+      <h2>
+        ¿Cómo se calcula la gasolina de un viaje?
+      </h2>
+
+      <p>
+        El cálculo del coste de combustible depende principalmente de tres
+        factores: los kilómetros recorridos, el consumo del vehículo y el
+        precio de la gasolina por litro.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <span class="km">1</span>
+
+        <b>
+          Calculamos los kilómetros
+        </b>
+
         <p>
-            Si te interesa únicamente el combustible, con tablas de euros por kilómetro y por trayecto,
-            tienes la guía de <a href="calcular-gasolina-por-km.html">gasolina por kilómetros</a>. Y si lo
-            que quieres es el coste de una ruta concreta con origen y destino, usa la
-            <a href="calcular-coste-gasolina.html">calculadora de gasolina</a> o la
-            <a href="calcular-coste-viaje.html">calculadora de coste de viaje</a>.
+          Primero obtenemos la distancia real por carretera entre el punto
+          de origen y el destino.
         </p>
 
-    </section>
+      </div>
 
-</main>
+
+      <div class="step">
+
+        <span class="km">2</span>
+
+        <b>
+          Calculamos los litros
+        </b>
+
+        <p>
+          Aplicamos el consumo de tu coche en litros cada 100 kilómetros
+          para estimar cuánto combustible necesitarás.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <span class="km">3</span>
+
+        <b>
+          Calculamos el precio
+        </b>
+
+        <p>
+          Multiplicamos los litros necesarios por el precio de la gasolina
+          que hayas introducido para obtener el coste estimado del viaje.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="consumos">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Consumo del vehículo
+      </div>
+
+      <h2>
+        ¿Cuánta gasolina consume un coche?
+      </h2>
+
+      <p>
+        Si no conoces el consumo exacto de tu coche, puedes utilizar estos
+        valores orientativos.
+      </p>
+
+    </div>
+
+
+    <div class="spec-card">
+
+      <table class="consumo">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Tipo de coche
+            </th>
+
+            <th>
+              Gasolina (L/100km)
+            </th>
+
+            <th>
+              Diésel (L/100km)
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr data-consumo="6.0">
+
+            <td>
+              Utilitario pequeño
+            </td>
+
+            <td class="num">
+              5,5 – 6,5
+            </td>
+
+            <td class="num">
+              4,5 – 5,5
+            </td>
+
+          </tr>
+
+
+          <tr data-consumo="6.5">
+
+            <td>
+              Compacto
+            </td>
+
+            <td class="num">
+              6,0 – 7,5
+            </td>
+
+            <td class="num">
+              5,0 – 6,0
+            </td>
+
+          </tr>
+
+
+          <tr data-consumo="8.5">
+
+            <td>
+              SUV / familiar
+            </td>
+
+            <td class="num">
+              7,5 – 9,5
+            </td>
+
+            <td class="num">
+              6,0 – 7,5
+            </td>
+
+          </tr>
+
+
+          <tr data-consumo="9.5">
+
+            <td>
+              Monovolumen / 7 plazas
+            </td>
+
+            <td class="num">
+              8,5 – 11
+            </td>
+
+            <td class="num">
+              6,5 – 8,5
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <p class="foot-note">
+      El consumo real puede variar dependiendo del tráfico, la velocidad,
+      la carga del vehículo, el estilo de conducción y el estado de los
+      neumáticos. Para obtener una estimación más precisa, introduce el
+      consumo medio que aparece en el ordenador de a bordo de tu coche.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Fórmula
+      </div>
+
+      <h2>
+        ¿Cómo calcular cuánto cuesta la gasolina?
+      </h2>
+
+      <p>
+        Puedes calcular el coste aproximado utilizando esta fórmula:
+      </p>
+
+    </div>
+
+
+    <div class="spec-card">
+
+      <p style="font-size:18px; line-height:1.7; margin:0;">
+        <strong>Coste del viaje = kilómetros × consumo ÷ 100 × precio por litro</strong>
+      </p>
+
+      <p style="color:var(--ink-dim); margin-bottom:0;">
+        Por ejemplo, si recorres 300 km, tu coche consume 6 litros cada
+        100 km y la gasolina cuesta 1,65 € por litro, necesitarás unos
+        18 litros y el coste estimado será de 29,70 €.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="faq">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Preguntas frecuentes
+      </div>
+
+      <h2>
+        Preguntas sobre el coste de gasolina
+      </h2>
+
+    </div>
+
+
+    <div class="faq">
+
+      <details>
+
+        <summary>
+          ¿La calculadora sirve para viajes de ida y vuelta?
+        </summary>
+
+        <p>
+          Sí. Marca la opción de ida y vuelta y la calculadora tendrá en
+          cuenta los kilómetros del trayecto completo.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ¿Qué consumo debo introducir?
+        </summary>
+
+        <p>
+          Introduce el consumo medio de tu vehículo en litros cada 100 km.
+          Si no lo conoces, puedes utilizar uno de los valores orientativos
+          disponibles en esta página.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ¿La calculadora incluye los peajes?
+        </summary>
+
+        <p>
+          No. RutaCoste calcula únicamente el coste del combustible.
+          Los peajes deben añadirse aparte.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ¿Puedo utilizarla para viajes fuera de España?
+        </summary>
+
+        <p>
+          Sí. Puedes introducir ciudades y direcciones de diferentes países
+          y calcular el coste estimado de combustible de la ruta.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ¿El resultado es exacto?
+        </summary>
+
+        <p>
+          El resultado es una estimación. El consumo real puede cambiar
+          según la velocidad, tráfico, carga, climatología y estilo de
+          conducción.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          ¿RutaCoste guarda mis búsquedas?
+        </summary>
+
+        <p>
+          No. Los cálculos se realizan en el navegador y no guardamos
+          un historial de las rutas que consultas. Puedes consultar nuestra
+          <a href="privacidad.html">
+            Política de Privacidad
+          </a>.
+        </p>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 <section id="mas-herramientas" class="related-section">
@@ -528,7 +870,7 @@
       <h2>Otras calculadoras y guías de RutaCoste</h2>
     </div>
     <div class="related-grid">
-      <a class="related-card" href="index.html"><b>Calculadora de ruta</b><span>Calcula el coste de cualquier ruta con origen y destino reales.</span></a><a class="related-card" href="calcular-coste-gasolina.html"><b>Coste de gasolina</b><span>Calculadora centrada en el gasto de gasolina de tu viaje.</span></a><a class="related-card" href="calcular-coste-viaje.html"><b>Coste del viaje</b><span>Estimación completa del coste de un viaje en coche.</span></a><a class="related-card" href="calcular-gasolina-por-km.html"><b>Gasolina por km</b><span>Gasto de gasolina según los km de tu ruta.</span></a><a class="related-card" href="cuanto-consume-mi-coche-en-un-viaje.html"><b>¿Cuánto consume mi coche?</b><span>Ejemplos de consumo para distintos trayectos.</span></a><a class="related-card" href="cuanto-cuesta-recorrer-100-km.html"><b>Coste de 100 km</b><span>Coste de referencia cada 100 km recorridos.</span></a><a class="related-card" href="cuantos-litros-gasolina-necesito-viaje.html"><b>Litros de gasolina necesarios</b><span>Litros que necesitas según tu ruta.</span></a><a class="related-card" href="gasolineras-en-ruta.html"><b>Gasolineras en ruta</b><span>Todas las gasolineras que hay en el recorrido de tu viaje.</span></a><a class="related-card" href="contacto.html"><b>Contacto</b><span>Escríbenos si tienes una duda o sugerencia.</span></a>
+      <a class="related-card" href="index.html"><b>Calculadora de ruta</b><span>Calcula el coste de cualquier ruta con origen y destino reales.</span></a><a class="related-card" href="calcular-coste-viaje.html"><b>Coste del viaje</b><span>Estimación completa del coste de un viaje en coche.</span></a><a class="related-card" href="calcular-coste-por-kilometro.html"><b>Coste por kilómetro</b><span>Cuánto cuesta cada kilómetro que recorres.</span></a><a class="related-card" href="calcular-gasolina-por-km.html"><b>Gasolina por km</b><span>Gasto de gasolina según los km de tu ruta.</span></a><a class="related-card" href="cuanto-consume-mi-coche-en-un-viaje.html"><b>¿Cuánto consume mi coche?</b><span>Ejemplos de consumo para distintos trayectos.</span></a><a class="related-card" href="cuanto-cuesta-recorrer-100-km.html"><b>Coste de 100 km</b><span>Coste de referencia cada 100 km recorridos.</span></a><a class="related-card" href="cuantos-litros-gasolina-necesito-viaje.html"><b>Litros de gasolina necesarios</b><span>Litros que necesitas según tu ruta.</span></a><a class="related-card" href="gasolineras-en-ruta.html"><b>Gasolineras en ruta</b><span>Todas las gasolineras que hay en el recorrido de tu viaje.</span></a><a class="related-card" href="contacto.html"><b>Contacto</b><span>Escríbenos si tienes una duda o sugerencia.</span></a>
     </div>
   </div>
 </section>
@@ -542,18 +884,38 @@
         RutaCoste<span class="dot">.</span>
       </div>
 
+
       <div class="foot-links">
-        <a href="index.html">Inicio</a>
-        <a href="index.html#calculadora">Calculadora</a>
+
+        <a href="index.html">
+          Inicio
+        </a>
+
+        <a href="#calculadora">
+          Calculadora
+        </a>
+
         <a href="gasolineras-en-ruta.html">Gasolineras en ruta</a>
+
         <a href="rutas.html">Rutas</a>
         <a href="contacto.html">Contacto</a>
-        <a href="aviso-legal.html">Aviso legal</a>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="cookies.html">Cookies</a>
+
+        <a href="aviso-legal.html">
+          Aviso legal
+        </a>
+
+        <a href="privacidad.html">
+          Privacidad
+        </a>
+
+        <a href="cookies.html">
+          Cookies
+        </a>
+
       </div>
 
     </div>
+
 
     <p class="foot-note">
       RutaCoste ofrece una estimación orientativa del coste de combustible.
@@ -566,66 +928,14 @@
 </footer>
 
 
-<script>
-(function () {
-    var fmt = function (n, d) {
-        return n.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }) + ' €';
-    };
-    var num = function (id) {
-        var v = parseFloat(String(document.getElementById(id).value).replace(',', '.'));
-        return v > 0 ? v : 0;
-    };
-    var req = ['consumo', 'precio', 'kilometros'];
-    var extras = ['seguro', 'mantenimiento', 'neumaticos', 'impuestos', 'deprec'];
-    var err = document.getElementById('formError');
 
-    function calcular() {
-        var ok = true;
-        req.forEach(function (id) {
-            var bad = !(num(id) > 0);
-            document.getElementById(id).classList.toggle('invalid', bad);
-            if (bad) ok = false;
-        });
-        err.classList.toggle('show', !ok);
-        if (!ok) return;
 
-        var consumo = num('consumo'), precio = num('precio'), km = num('kilometros');
-        var costeKm = (consumo / 100) * precio;
-        document.getElementById('costeKm').textContent = fmt(costeKm, 3);
-        document.getElementById('coste100').textContent = fmt(costeKm * 100, 2);
-        document.getElementById('costeTotal').textContent = fmt(costeKm * km, 2);
-        document.getElementById('litrosNote').textContent =
-            'Solo combustible. Para ' + km.toLocaleString('es-ES') + ' km necesitas unos ' +
-            (consumo * km / 100).toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' litros.';
 
-        var kmAnio = num('kmAnio');
-        var anuales = extras.reduce(function (s, id) { return s + num(id); }, 0);
-        var real = document.getElementById('realBox');
-        if (kmAnio > 0 && anuales > 0) {
-            var combAnio = costeKm * kmAnio;
-            var totalAnio = combAnio + anuales;
-            var realKm = totalAnio / kmAnio;
-            document.getElementById('realKm').textContent = fmt(realKm, 3);
-            document.getElementById('realTrayecto').textContent = fmt(realKm * km, 2);
-            document.getElementById('realAnio').textContent = fmt(totalAnio, 0);
-            document.getElementById('realNote').textContent =
-                'El combustible es el ' + Math.round(combAnio / totalAnio * 100) +
-                ' % del coste total; el resto son gastos del coche que pagas aunque lo uses poco.';
-            real.classList.add('show');
-        } else {
-            real.classList.remove('show');
-        }
-        document.getElementById('results').classList.add('show');
-    }
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+></script>
 
-    document.getElementById('calcBtn').addEventListener('click', calcular);
-    req.concat(['kmAnio'], extras).forEach(function (id) {
-        document.getElementById(id).addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') calcular();
-        });
-    });
-})();
-</script>
+<script src="app.js"></script>
 
 <div id="cookie-banner">
   <p>
@@ -638,6 +948,5 @@
     <button class="cookie-reject" id="cookie-reject">Rechazar</button>
   </div>
 </div>
-<script src="app.js"></script>
 </body>
 </html>
