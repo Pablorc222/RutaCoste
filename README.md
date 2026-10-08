@@ -85,9 +85,9 @@ RutaCoste está desarrollado como una aplicación web estática utilizando tecno
 * **OpenStreetMap**
 * **Nominatim**
 * **OSRM**
-* **Vercel**
+* **Vercel** (hosting y una función serverless)
 
-No utiliza backend propio ni framework frontend.
+No utiliza framework frontend. El único código de servidor es la función `api/gasolineras.js`, que consulta los precios de carburantes del Ministerio para la Transición Ecológica.
 
 ---
 
@@ -116,6 +116,10 @@ Se utiliza para calcular la ruta real por carretera entre dos puntos.
 Proyecto:
 
 http://project-osrm.org/
+
+### Ministerio para la Transición Ecológica
+
+La función `api/gasolineras.js` devuelve las gasolineras de una zona con sus precios, a partir del servicio REST de precios de carburantes. Se usa en la página de gasolineras en ruta.
 
 ### Leaflet
 
@@ -168,11 +172,10 @@ El proyecto está preparado para desplegarse en **Vercel**.
 
 No necesita:
 
-* Backend
+* Servidor propio (la función de `api/` se despliega sola en Vercel)
 * Base de datos
 * Build command
 * Framework
-* Servidor propio
 
 La aplicación puede desplegarse directamente conectando el repositorio de GitHub con Vercel.
 
@@ -185,17 +188,37 @@ La aplicación puede desplegarse directamente conectando el repositorio de GitHu
 ```text
 RutaCoste/
 │
-├── index.html
-├── style.css
-├── app.js
+├── index.html                      Portada y calculadora de rutas
+├── style.css / extras.css          Estilos
+├── app.js                          Lógica de la calculadora de rutas
+├── gasolineras.js / contacto.js    Scripts de páginas concretas
+├── api/gasolineras.js              Función serverless (precios de carburantes)
 │
-├── aviso-legal.html
-├── privacidad.html
-├── cookies.html
+├── calcular-coste-gasolina.html    Calculadora de gasolina de una ruta
+├── calcular-coste-viaje.html       Calculadora del coste completo de un viaje
+├── calcular-coste-por-kilometro.html  Coste real por km (con gastos anuales)
+├── calcular-gasolina-por-km.html   Guía y tablas de gasolina por km
+├── cuanto-cuesta-recorrer-100-km.html
+├── cuanto-consume-mi-coche-en-un-viaje.html  Consumo real y cómo medirlo
+├── cuantos-litros-gasolina-necesito-viaje.html  Litros por distancia y depósitos
+├── gasolineras-en-ruta.html
+├── rutas.html                      Tabla comparativa de las 15 rutas
+├── coste-gasolina-<origen>-<destino>.html  15 páginas de ruta
 │
-├── robots.txt
-└── sitemap.xml
+├── aviso-legal.html, privacidad.html, cookies.html, contacto.html
+├── robots.txt, sitemap.xml, ads.txt
+└── favicon / og-image
 ```
+
+### Páginas de ruta e indexación
+
+Solo tres rutas están indexadas, porque tienen contenido propio (consejos del recorrido, paradas y coste por persona):
+
+* `coste-gasolina-madrid-barcelona.html`
+* `coste-gasolina-madrid-valencia.html`
+* `coste-gasolina-madrid-zaragoza.html`
+
+Las otras 12 llevan `<meta name="robots" content="noindex, follow">` y no están en el sitemap, para evitar contenido casi duplicado. Para volver a indexar una, hay que cambiarla a `index, follow`, darle contenido propio y añadirla al sitemap.
 
 ### Archivos principales
 
@@ -203,12 +226,13 @@ RutaCoste/
 | ------------------ | ------------------------------ |
 | `index.html`       | Página principal y calculadora |
 | `style.css`        | Diseño y estilos               |
-| `app.js`           | Lógica de la aplicación        |
-| `aviso-legal.html` | Aviso legal                    |
-| `privacidad.html`  | Política de privacidad         |
-| `cookies.html`     | Política de cookies            |
+| `app.js`           | Lógica de la calculadora       |
+| `api/gasolineras.js` | Precios de gasolineras       |
+| `rutas.html`       | Tabla comparativa de rutas     |
 | `robots.txt`       | Configuración para buscadores  |
-| `sitemap.xml`      | Mapa del sitio                 |
+| `sitemap.xml`      | Mapa del sitio (17 URL)        |
+
+Las URL se usan siempre con `.html`; sin esa extensión devuelven 404.
 
 ---
 
@@ -226,6 +250,7 @@ RutaCoste incluye elementos básicos de SEO:
 * Estructura semántica HTML
 * Contenido informativo sobre el cálculo del combustible
 * Preguntas frecuentes
+* Cada página responde a una pregunta distinta (sin contenido repetido entre páginas)
 
 El objetivo es que la herramienta pueda posicionarse para búsquedas relacionadas con:
 
@@ -243,8 +268,10 @@ El objetivo es que la herramienta pueda posicionarse para búsquedas relacionada
 
 Algunas mejoras previstas para futuras versiones:
 
-* [ ] Añadir dominio propio
-* [ ] Crear más contenido orientado a búsquedas
+* [x] Añadir dominio propio
+* [ ] Reforzar las páginas con más impresiones (`calcular-coste-viaje` y la portada)
+* [ ] Añadir una página «Quiénes somos»
+* [ ] Reforzar más rutas con datos propios (carreteras, peajes) antes de volver a indexarlas
 * [ ] Mejorar la precisión de los precios de combustible
 * [ ] Añadir cálculo de peajes
 * [ ] Añadir más opciones de vehículos
