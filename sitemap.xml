@@ -81,4 +81,8 @@
     <loc>https://www.rutacoste.es/coste-gasolina-madrid-zaragoza.html</loc>
     <lastmod>2026-10-07</lastmod>
   </url>
+  <url><loc>https://www.rutacoste.es/guias.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rutacoste.es/consumo-real-coche-deposito-lleno.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rutacoste.es/gasolina-o-diesel-cual-sale-mas-a-cuenta.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rutacoste.es/repartir-gastos-viaje-coche.html</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
