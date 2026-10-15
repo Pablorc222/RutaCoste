@@ -1,0 +1,64 @@
+{
+  "redirects": [
+    {
+      "source": "/coste-gasolina-barcelona-valencia.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-barcelona-zaragoza.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-alicante.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-bilbao.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-cadiz.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-cordoba.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-granada.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-malaga.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-madrid-sevilla.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-sevilla-cadiz.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-sevilla-malaga.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    },
+    {
+      "source": "/coste-gasolina-valencia-alicante.html",
+      "destination": "/rutas.html",
+      "permanent": true
+    }
+  ]
+}
