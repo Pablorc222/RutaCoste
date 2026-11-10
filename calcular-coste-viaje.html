@@ -34,19 +34,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO principal -->
-  <title>Calculadora de coste de viaje en coche | RutaCoste</title>
+  <title>Coste total de un viaje en coche: gasolina, peajes y reparto | RutaCoste</title>
   <meta
     name="description"
-    content="Calcula el coste de un viaje en coche de forma sencilla. Introduce origen, destino, consumo y precio del combustible y obtén una estimación del coste de tu ruta."
+    content="Calcula el coste total de un viaje en coche: combustible, peajes, aparcamiento y desgaste. Ejemplo resuelto con reparto por persona."
   >
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.rutacoste.es/calcular-coste-viaje.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="RutaCoste | Calcula el coste de tu viaje">
+  <meta property="og:title" content="Coste total de un viaje en coche: gasolina, peajes y reparto | RutaCoste">
   <meta
     property="og:description"
-    content="Calcula el coste de combustible de tu viaje por carretera. Gratis, rápido y sin registro."
+    content="Calcula el coste total de un viaje en coche: combustible, peajes, aparcamiento y desgaste, con ejemplo resuelto."
   >
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.rutacoste.es/calcular-coste-viaje.html">
@@ -124,50 +124,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿RutaCoste incluye peajes?",
+      "name": "¿Qué incluye el coste total de un viaje en coche?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. RutaCoste calcula únicamente el coste de combustible. Si tu ruta incluye autopistas de peaje, súmalo aparte al resultado."
+        "text": "Además del combustible, el coste del trayecto incluye los peajes, el aparcamiento y el desgaste del coche. Los costes fijos como el seguro o la ITV los pagas igualmente, así que solo se suman si calculas el coste real del vehículo."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Cómo de exacta es la distancia calculada?",
+      "name": "¿Cómo calculo el coste del viaje por persona?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "La distancia se calcula sobre la red de carreteras real, no en línea recta, así que suele ser muy cercana a la que marcaría un GPS. Puede variar ligeramente según la ruta exacta que elijas al conducir (autopista vs. carretera secundaria, por ejemplo)."
+        "text": "Suma combustible, peajes y aparcamiento y divide el total entre los viajeros. El gasto del coche es el mismo con uno o con cuatro pasajeros, por eso compartir reduce el coste individual."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Puedo calcular rutas fuera de España?",
+      "name": "¿La calculadora incluye los peajes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. El buscador de origen y destino admite ciudades y direcciones de cualquier país; elige el resultado correcto en el desplegable (verás la región y el país junto a cada coincidencia) y calcula igual que con una ruta nacional."
+        "text": "No. Calcula el combustible a partir de la distancia, el consumo y el precio por litro. Si tu ruta tiene autopistas de peaje, consulta su tarifa oficial y súmala al resultado."
       }
     },
     {
       "@type": "Question",
-      "name": "¿En qué moneda se muestra el resultado?",
+      "name": "¿Cuentan el seguro y la ITV en un viaje puntual?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RutaCoste detecta la moneda a partir del país de origen que elijas en el buscador (o del destino, si no seleccionas un origen concreto) y la aplica automáticamente al precio y al resultado final — verás el código de moneda junto al campo de precio. Si no se detecta el país, se usa el euro por defecto. No se hace conversión entre divisas: introduce el precio del combustible en la moneda que se te indique."
+        "text": "Normalmente no, porque no aumentan por hacer un viaje concreto. Entran en el coste real por kilómetro del coche, que puedes calcular en la herramienta correspondiente."
       }
     },
     {
       "@type": "Question",
-      "name": "¿De dónde sale el precio del combustible por defecto?",
+      "name": "¿Sale más barato ir en coche o en tren o autobús?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Es un valor orientativo basado en el precio medio en España. Los precios cambian constantemente y varían por provincia, país y gasolinera, así que te recomendamos actualizarlo con el precio que veas en tu zona antes de calcular."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿RutaCoste guarda mis búsquedas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Los cálculos se hacen en tu propio navegador y no guardamos el histórico de rutas que consultas. Puedes ver más detalle en nuestra Política de Privacidad."
+        "text": "Depende de cuántas personas viajen y de la ruta. Compara el coste total del viaje por persona con el precio de los billetes: en coche suele compensar más cuantos más viajeros compartan el gasto."
       }
     }
   ]
@@ -586,324 +578,65 @@
      CONTENIDO SEO
      ========================================================= -->
 
-<section id="calcular-coste">
-
+<section id="coste-total">
   <div class="wrap">
-
     <div class="section-head">
-
-      <div class="eyebrow">
-        Calcular coste de un viaje
-      </div>
-
-      <h2>
-        ¿Cómo calcular cuánto cuesta un viaje en coche?
-      </h2>
-
-      <p>
-        Calcular el coste de un viaje en coche es sencillo si conoces
-        la distancia, el consumo de tu vehículo y el precio del combustible.
-        RutaCoste combina estos datos para ofrecerte una estimación del
-        gasto de gasolina o diésel de tu trayecto.
-      </p>
-
+      <div class="eyebrow">Coste total del viaje</div>
+      <h2>Qué sumar además de la gasolina</h2>
+      <p>La calculadora te da el combustible de la ruta. Para saber cuánto te cuesta de verdad el viaje conviene añadir el resto de gastos que dependen del trayecto. Aquí tienes cómo montar esa cuenta completa.</p>
     </div>
-
-
     <div class="seo-content">
-
-
-      <!-- BLOQUE 1 -->
-
       <div class="seo-block">
-
-        <h3>
-          ¿Cómo se calcula el gasto de gasolina de un viaje?
-        </h3>
-
-        <p>
-          Para calcular cuánto vas a gastar en combustible primero necesitas
-          conocer la distancia del viaje y el consumo medio de tu coche.
-          El consumo normalmente se expresa en litros cada 100 kilómetros
-          (L/100 km).
-        </p>
-
-        <p>
-          La fórmula para calcular los litros necesarios es:
-        </p>
-
-        <div class="formula">
-          Litros necesarios = distancia × consumo ÷ 100
-        </div>
-
-        <p>
-          Después, multiplicamos los litros necesarios por el precio del
-          combustible para obtener el coste aproximado del viaje.
-        </p>
-
-        <div class="formula">
-          Coste del viaje = litros necesarios × precio por litro
-        </div>
-
+        <h3>Los gastos de un viaje en coche</h3>
+        <div class="spec-card"><table class="consumo">
+          <thead><tr><th>Gasto</th><th>Cómo estimarlo</th></tr></thead>
+          <tbody>
+            <tr><td>Combustible</td><td>Con la calculadora: litros necesarios × precio por litro.</td></tr>
+            <tr><td>Peajes</td><td>Consulta la tarifa oficial de cada autopista de peaje de tu ruta y súmala. La calculadora no los incluye.</td></tr>
+            <tr><td>Aparcamiento</td><td>Zona regulada o parking en destino, por el número de días.</td></tr>
+            <tr><td>Desgaste del coche</td><td>Neumáticos, frenos, aceite y revisiones se reparten por kilómetro. Mira el <a href="calcular-coste-por-kilometro.html">coste real por kilómetro</a>.</td></tr>
+            <tr><td>Costes fijos (seguro, ITV, amortización)</td><td>Los pagas igual hagas o no el viaje, así que solo cuentan si quieres calcular el coste real del coche.</td></tr>
+          </tbody>
+        </table></div>
       </div>
-
-
-      <!-- BLOQUE 2 -->
-
       <div class="seo-block">
-
-        <h3>
-          Ejemplo: viaje de 500 kilómetros
-        </h3>
-
-        <p>
-          Imagina que vas a realizar un viaje de 500 km con un coche que
-          consume 6,5 litros cada 100 km y el precio de la gasolina es
-          1,65 € por litro.
-        </p>
-
-
-        <div class="example-calculation">
-
-          <div>
-            <span>
-              Distancia
-            </span>
-
-            <strong>
-              500 km
-            </strong>
-          </div>
-
-
-          <div>
-            <span>
-              Consumo
-            </span>
-
-            <strong>
-              6,5 L/100 km
-            </strong>
-          </div>
-
-
-          <div>
-            <span>
-              Combustible
-            </span>
-
-            <strong>
-              32,5 litros
-            </strong>
-          </div>
-
-
-          <div>
-            <span>
-              Coste estimado
-            </span>
-
-            <strong>
-              53,63 €
-            </strong>
-          </div>
-
-        </div>
-
-
-        <p>
-          Si el trayecto es de ida y vuelta, la distancia total sería de
-          1.000 km y el coste estimado de combustible sería aproximadamente
-          107,25 €.
-        </p>
-
+        <h3>Ejemplo: escapada de fin de semana de 800 km (ida y vuelta)</h3>
+        <p>Un coche que consume 6,5 L/100 km, gasolina a 1,65 € por litro, 400 km de ida y otros 400 de vuelta. Los peajes y el aparcamiento son cifras ficticias, solo para ilustrar la suma:</p>
+        <div class="spec-card"><table class="consumo">
+          <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+          <tbody>
+            <tr><td>Combustible: 800 km × 6,5 L/100 km = 52 L × 1,65 €</td><td class="num">85,80 €</td></tr>
+            <tr><td>Peajes (ejemplo)</td><td class="num">12,00 €</td></tr>
+            <tr><td>Aparcamiento, 2 noches (ejemplo)</td><td class="num">18,00 €</td></tr>
+            <tr><td><strong>Total del viaje</strong></td><td class="num"><strong>115,80 €</strong></td></tr>
+            <tr><td>Por persona, 2 viajeros</td><td class="num">57,90 €</td></tr>
+            <tr><td>Por persona, 4 viajeros</td><td class="num">28,95 €</td></tr>
+          </tbody>
+        </table></div>
+        <p>Fíjate en que, sin peajes ni aparcamiento, la gasolina sola daría 85,80 €. Los extras suponen en este caso más de una cuarta parte del total. Para repartirlo entre pasajeros, consulta <a href="repartir-gastos-viaje-coche.html">cómo repartir los gastos de un viaje en coche</a>.</p>
       </div>
-
-
-      <!-- BLOQUE 3 -->
-
       <div class="seo-block">
-
-        <h3>
-          ¿Qué necesitas para calcular el coste de un viaje?
-        </h3>
-
-        <p>
-          Solo necesitas tres datos principales: la distancia que vas a
-          recorrer, el consumo de tu vehículo y el precio actual del
-          combustible.
-        </p>
-
-
+        <h3>Cómo reducir el coste sin complicarte</h3>
         <ul>
-
-          <li>
-            <strong>Distancia:</strong>
-            kilómetros del trayecto por carretera.
-          </li>
-
-          <li>
-            <strong>Consumo:</strong>
-            litros que consume tu coche cada 100 kilómetros.
-          </li>
-
-          <li>
-            <strong>Precio:</strong>
-            coste actual de la gasolina o el diésel por litro.
-          </li>
-
+          <li>Mantén una velocidad constante: los acelerones y las velocidades altas disparan el consumo.</li>
+          <li>Revisa la presión de los neumáticos antes de salir. Con presión baja el coche gasta más.</li>
+          <li>Viaja ligero y evita la baca si no la necesitas: cada kilo y cada elemento exterior cuenta.</li>
+          <li>Compara precios antes de repostar. Puedes ver las <a href="gasolineras-en-ruta.html">gasolineras en tu ruta</a>.</li>
+          <li>Compartir coche reduce el coste por persona, porque el gasto del trayecto es el mismo con uno o con cuatro viajeros.</li>
         </ul>
-
-
-        <p>
-          Si no conoces el consumo exacto de tu vehículo, puedes utilizar
-          nuestros valores orientativos según el tipo de coche.
-        </p>
-
       </div>
-
-
-      <!-- BLOQUE 4 -->
-
       <div class="seo-block">
-
-        <h3>
-          ¿Cuánto cuesta viajar 100, 300, 500 o 1.000 km?
-        </h3>
-
-        <p>
-          El coste depende principalmente del consumo del vehículo y del
-          precio del combustible. Como referencia, utilizando un consumo
-          de 6,5 L/100 km y un precio de 1,65 € por litro:
-        </p>
-
-
-        <div class="distance-table">
-
-          <div class="distance-row distance-header">
-
-            <span>
-              Distancia
-            </span>
-
-            <span>
-              Litros
-            </span>
-
-            <span>
-              Coste aprox.
-            </span>
-
-          </div>
-
-
-          <div class="distance-row">
-
-            <span>
-              100 km
-            </span>
-
-            <span>
-              6,5 L
-            </span>
-
-            <strong>
-              10,73 €
-            </strong>
-
-          </div>
-
-
-          <div class="distance-row">
-
-            <span>
-              300 km
-            </span>
-
-            <span>
-              19,5 L
-            </span>
-
-            <strong>
-              32,18 €
-            </strong>
-
-          </div>
-
-
-          <div class="distance-row">
-
-            <span>
-              500 km
-            </span>
-
-            <span>
-              32,5 L
-            </span>
-
-            <strong>
-              53,63 €
-            </strong>
-
-          </div>
-
-
-          <div class="distance-row">
-
-            <span>
-              1.000 km
-            </span>
-
-            <span>
-              65 L
-            </span>
-
-            <strong>
-              107,25 €
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <p class="seo-note">
-          Son ejemplos orientativos. El coste real cambia según el consumo
-          del vehículo, el precio del combustible y las condiciones del viaje.
-        </p>
-
+        <h3>Lista rápida antes de salir</h3>
+        <ul>
+          <li>Calcula el combustible con tu consumo real. Si no lo conoces, mira <a href="consumo-real-coche-deposito-lleno.html">cómo medirlo con el depósito lleno</a>.</li>
+          <li>Comprueba si tu ruta tiene peajes y anota su importe.</li>
+          <li>Estima el aparcamiento en destino.</li>
+          <li>Divide el total entre los viajeros para saber el coste por persona.</li>
+          <li>Compáralo con otras opciones de transporte, como tren o autobús, usando el coste total por persona.</li>
+        </ul>
       </div>
-
-
-      <!-- BLOQUE 5 -->
-
-      <div class="seo-block">
-
-        <h3>
-          Calcula el coste de tu viaje
-        </h3>
-
-        <p>
-          En lugar de hacer los cálculos manualmente, puedes utilizar
-          nuestra calculadora de combustible. Introduce tu origen y destino,
-          selecciona el consumo de tu vehículo y añade el precio actual
-          del combustible.
-        </p>
-
-
-        <a
-          href="#calculadora"
-          class="seo-button"
-        >
-          Calcular mi viaje
-        </a>
-
-      </div>
-
     </div>
-
   </div>
-
 </section>
 
 
@@ -1049,71 +782,6 @@
      INTERNACIONAL
      ========================================================= -->
 
-<section id="internacional">
-
-  <div class="wrap">
-
-    <div class="section-head">
-
-      <div class="eyebrow">
-        También fuera de España
-      </div>
-
-      <h2>
-        Funciona con cualquier origen y destino del mundo
-      </h2>
-
-    </div>
-
-
-    <div class="intl">
-
-      <div>
-
-        <p class="intl-text">
-          Escribe cualquier ciudad, pueblo o dirección del mundo:
-          el buscador te mostrará coincidencias con su región y país
-          para que elijas la correcta antes de calcular. Útil para viajes
-          internacionales, rutas transfronterizas o si simplemente vives
-          fuera de España.
-        </p>
-
-
-        <p class="intl-text last">
-          El precio que introduzcas se interpreta en la moneda del país
-          de origen (o del destino, si no seleccionas un origen de la lista):
-          verás la moneda detectada junto al campo de precio, y el resultado
-          final se muestra ya formateado en esa moneda.
-        </p>
-
-      </div>
-
-
-      <div
-        class="intl-flags"
-        aria-hidden="true"
-      >
-
-        <span>ES</span>
-        <span>FR</span>
-        <span>PT</span>
-        <span>IT</span>
-        <span>DE</span>
-        <span>GB</span>
-        <span>NL</span>
-        <span>BE</span>
-        <span>MA</span>
-        <span>MX</span>
-        <span>AR</span>
-        <span>US</span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
 
 
 <!-- =========================================================
@@ -1139,102 +807,50 @@
 
     <div class="faq">
 
-
       <details>
-
         <summary>
-          ¿RutaCoste incluye peajes?
+          ¿Qué incluye el coste total de un viaje en coche?
         </summary>
-
         <p>
-          No. RutaCoste calcula únicamente el coste de combustible.
-          Si tu ruta incluye autopistas de peaje, súmalo aparte al resultado.
+          Además del combustible, el coste del trayecto incluye los peajes, el aparcamiento y el desgaste del coche. Los costes fijos como el seguro o la ITV los pagas igualmente, así que solo se suman si calculas el coste real del vehículo.
         </p>
-
       </details>
 
-
       <details>
-
         <summary>
-          ¿Cómo de exacta es la distancia calculada?
+          ¿Cómo calculo el coste del viaje por persona?
         </summary>
-
         <p>
-          La distancia se calcula sobre la red de carreteras real,
-          no en línea recta, así que suele ser muy cercana a la que
-          marcaría un GPS. Puede variar ligeramente según la ruta exacta
-          que elijas al conducir (autopista vs. carretera secundaria,
-          por ejemplo).
+          Suma combustible, peajes y aparcamiento y divide el total entre los viajeros. El gasto del coche es el mismo con uno o con cuatro pasajeros, por eso compartir reduce el coste individual.
         </p>
-
       </details>
 
-
       <details>
-
         <summary>
-          ¿Puedo calcular rutas fuera de España?
+          ¿La calculadora incluye los peajes?
         </summary>
-
         <p>
-          Sí. El buscador de origen y destino admite ciudades y direcciones
-          de cualquier país; elige el resultado correcto en el desplegable
-          (verás la región y el país junto a cada coincidencia) y calcula
-          igual que con una ruta nacional.
+          No. Calcula el combustible a partir de la distancia, el consumo y el precio por litro. Si tu ruta tiene autopistas de peaje, consulta su tarifa oficial y súmala al resultado.
         </p>
-
       </details>
 
-
       <details>
-
         <summary>
-          ¿En qué moneda se muestra el resultado?
+          ¿Cuentan el seguro y la ITV en un viaje puntual?
         </summary>
-
         <p>
-          RutaCoste detecta la moneda a partir del país de origen que elijas
-          en el buscador (o del destino, si no seleccionas un origen concreto)
-          y la aplica automáticamente al precio y al resultado final — verás
-          el código de moneda junto al campo de precio. Si no se detecta el
-          país, se usa el euro por defecto. No se hace conversión entre divisas:
-          introduce el precio del combustible en la moneda que se te indique.
+          Normalmente no, porque no aumentan por hacer un viaje concreto. Entran en el coste real por kilómetro del coche, que puedes calcular en la herramienta correspondiente.
         </p>
-
       </details>
 
-
       <details>
-
         <summary>
-          ¿De dónde sale el precio del combustible por defecto?
+          ¿Sale más barato ir en coche o en tren o autobús?
         </summary>
-
         <p>
-          Es un valor orientativo basado en el precio medio en España.
-          Los precios cambian constantemente y varían por provincia,
-          país y gasolinera, así que te recomendamos actualizarlo con
-          el precio que veas en tu zona antes de calcular.
+          Depende de cuántas personas viajen y de la ruta. Compara el coste total del viaje por persona con el precio de los billetes: en coche suele compensar más cuantos más viajeros compartan el gasto.
         </p>
-
       </details>
-
-
-      <details>
-
-        <summary>
-          ¿RutaCoste guarda mis búsquedas?
-        </summary>
-
-        <p>
-          No. Los cálculos se hacen en tu propio navegador y no guardamos
-          el histórico de rutas que consultas. Puedes ver más detalle en
-          nuestra <a href="privacidad.html">Política de Privacidad</a>.
-        </p>
-
-      </details>
-
 
     </div>
 
